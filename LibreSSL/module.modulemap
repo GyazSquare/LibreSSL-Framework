@@ -1,0 +1,6 @@
+framework module LibreSSL [extern_c] {
+  umbrella header "LibreSSL.h"
+
+  export *
+  module * { export * }
+}

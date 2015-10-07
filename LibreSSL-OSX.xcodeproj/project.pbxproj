@@ -21,6 +21,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D732D8091BC49F5C007B455C /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		D7B1D71B1BBAB8B500EE962A /* LibreSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LibreSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7B1D71E1BBAB8B500EE962A /* LibreSSL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibreSSL.h; sourceTree = "<group>"; };
 		D7B1D7201BBAB8B500EE962A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,6 +59,7 @@
 			children = (
 				D7B1D71E1BBAB8B500EE962A /* LibreSSL.h */,
 				D7B1D7201BBAB8B500EE962A /* Info.plist */,
+				D732D8091BC49F5C007B455C /* module.modulemap */,
 			);
 			path = LibreSSL;
 			sourceTree = "<group>";
@@ -186,7 +188,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Copy LibreSSL headers\ncp -R \"${LIBRESSL_INCLUDE_DIR}\"/* \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}\"\n\n# Modify include directives\nfind \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}\" \\( -name \"*.h\" -and ! -name \"${UMBRELLA_HEADER}\" \\) -print0 | xargs -0 sed -e 's/\\(#[[:blank:]]*include[[:blank:]]*<\\)\\(openssl\\/\\)/\\1LibreSSL\\/\\2/g' -i \"\"\n\n# Append LibreSSL headers to the umbrella header\nfind \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}\" \\( -name \"*.h\" -and ! -name \"${UMBRELLA_HEADER}\" \\) | sed -e \"s|^${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}\\(.*\\.h\\)|#include <LibreSSL\\1>|g\" >> \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${UMBRELLA_HEADER}\"\n";
+			shellScript = "# Copy LibreSSL headers\ncp -R \"${LIBRESSL_INCLUDE_DIR}\"/* \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}\"\n\n# Modify include directives\nfind \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}\" \\( -name \"*.h\" -and ! -name \"${UMBRELLA_HEADER}\" \\) -print0 | xargs -0 sed -e 's/\\(#[[:blank:]]*include[[:blank:]]*<\\)\\(openssl\\/\\)/\\1LibreSSL\\/\\2/g' -i \"\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -319,6 +321,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(LIBRESSL_LIB_DIR)";
+				MODULEMAP_FILE = LibreSSL/module.modulemap;
 				OTHER_LDFLAGS = (
 					"-lcrypto",
 					"-lssl",
@@ -345,6 +348,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(LIBRESSL_LIB_DIR)";
+				MODULEMAP_FILE = LibreSSL/module.modulemap;
 				OTHER_LDFLAGS = (
 					"-lcrypto",
 					"-lssl",
