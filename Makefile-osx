@@ -4,6 +4,7 @@ installdir=$(LIBRESSL_INSTALL_DIR)
 libdir=$(LIBRESSL_LIB_DIR)
 includedir=$(LIBRESSL_INCLUDE_DIR)
 libname=libressl.$(LIBRESSL_PACKAGE_VERSION).dylib
+openssldir=$(TMPDIR)/libressl.$(LIBRESSL_PACKAGE_VERSION)
 
 ifeq ($(ONLY_ACTIVE_ARCH),YES)
 TARGET_ARCHS="$(arch)"
@@ -14,7 +15,7 @@ CFLAGS=$(shell echo "$(TARGET_ARCHS)" | sed 's/ / -arch /g' | sed 's/^/-arch /g'
 LDFLAGS=$(CFLAGS)
 
 CONFIGURE=$(packagedir)/configure
-CONFIGUREFLAGS=--prefix="$(installdir)" --libdir="$(libdir)" --includedir="$(includedir)" --disable-shared --disable-asm
+CONFIGUREFLAGS=--prefix="$(installdir)" --libdir="$(libdir)" --includedir="$(includedir)" --disable-shared --disable-asm --with-openssldir="$(openssldir)"
 
 all: clean "$(libname)"
 
