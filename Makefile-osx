@@ -19,7 +19,7 @@ CONFIGUREFLAGS=--prefix="$(installdir)" --libdir="$(libdir)" --includedir="$(inc
 
 all: clean "$(libname)"
 
-install: distclean "$(libname)"
+install: clean "$(libname)"
 
 "$(libname)": "$(installdir)"
 	cd "$(builddir)" && \
@@ -31,9 +31,5 @@ make install
 	mkdir -p "$(installdir)"
 
 clean:
-	-rm -fr - "$(installdir)" && \
-cd "$(builddir)" && make clean || true
-
-distclean:
 	-rm -fr - "$(installdir)" && \
 cd "$(builddir)" && make distclean || true
