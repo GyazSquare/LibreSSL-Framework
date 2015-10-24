@@ -122,7 +122,7 @@
 		D7B1D7121BBAB8B500EE962A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "GyazSquare Inc.";
 				TargetAttributes = {
 					D7B1D71A1BBAB8B500EE962A = {
