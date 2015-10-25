@@ -4,7 +4,7 @@ installdir=$(LIBRESSL_INSTALL_DIR)
 libdir=$(LIBRESSL_LIB_DIR)
 includedir=$(LIBRESSL_INCLUDE_DIR)
 libname=libressl.$(LIBRESSL_PACKAGE_VERSION).dylib
-openssldir=$(TMPDIR)/libressl.$(LIBRESSL_PACKAGE_VERSION)
+openssldir=$(shell /usr/bin/openssl version -d | awk '{ print $$2 }')
 
 ifeq ($(ONLY_ACTIVE_ARCH),YES)
 TARGET_ARCHS="$(arch)"
@@ -33,3 +33,5 @@ make install
 clean:
 	-rm -fr - "$(installdir)" && \
 cd "$(builddir)" && make distclean || true
+
+.PHONY: "$(libname)" all clean install
