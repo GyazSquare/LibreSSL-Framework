@@ -99,10 +99,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D7B1D7231BBAB8B500EE962A /* Build configuration list for PBXNativeTarget "LibreSSL" */;
 			buildPhases = (
+				D74EF8331E3780810051633E /* Change Install names */,
+				D76394961BF8AD3E00F7CF55 /* Create Custom Structure */,
 				D7B1D7161BBAB8B500EE962A /* Sources */,
 				D7B1D7171BBAB8B500EE962A /* Frameworks */,
 				D7B1D7181BBAB8B500EE962A /* Headers */,
 				D765113D1BBE96E1004D9EEF /* Install LibreSSL Headers */,
+				D74EF8311E377FC30051633E /* Install LibreSSL Libraries */,
+				D74EF8321E3780280051633E /* Install openssl binaries */,
 				D7B1D7191BBAB8B500EE962A /* Resources */,
 				D765113A1BBE8F31004D9EEF /* Copy & Open Target Build Directory */,
 			);
@@ -122,7 +126,7 @@
 		D7B1D7121BBAB8B500EE962A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "GyazSquare Inc.";
 				TargetAttributes = {
 					D7B1D71A1BBAB8B500EE962A = {
@@ -162,6 +166,62 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		D74EF8311E377FC30051633E /* Install LibreSSL Libraries */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Install LibreSSL Libraries";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -ev\n\n# Copy LibreSSL libraries\ncp -R \"${LIBRESSL_LIB_DIR}\"/lib*.dylib \"${TARGET_BUILD_DIR}/${LIBRARIES_FOLDER_PATH}\"\n";
+		};
+		D74EF8321E3780280051633E /* Install openssl binaries */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Install openssl binaries";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -ev\n\n# Copy openssl\ncp -R \"${LIBRESSL_BIN_DIR}/openssl\" \"${TARGET_BUILD_DIR}/${SUPPORT_FOLDER_PATH}\"\n";
+		};
+		D74EF8331E3780810051633E /* Change Install names */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Change Install names";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -ev\n\nLIBCRYPTO_FILENAME=$(basename `readlink \"${LIBRESSL_LIB_DIR}/libcrypto.dylib\"`)\nLIBCRYPTO_FILE=\"${LIBRESSL_LIB_DIR}/${LIBCRYPTO_FILENAME}\"\nLIBCRYPTO_OLD_NAME=\"${LIBCRYPTO_FILE}\"\nLIBCRYPTO_NEW_NAME=\"@rpath/${LIBRARIES_FOLDER_PATH}/${LIBCRYPTO_FILENAME}\"\n\nLIBSSL_FILENAME=$(basename `readlink \"${LIBRESSL_LIB_DIR}/libssl.dylib\"`)\nLIBSSL_FILE=\"${LIBRESSL_LIB_DIR}/${LIBSSL_FILENAME}\"\nLIBSSL_OLD_NAME=\"${LIBSSL_FILE}\"\nLIBSSL_NEW_NAME=\"@rpath/${LIBRARIES_FOLDER_PATH}/${LIBSSL_FILENAME}\"\nLIBSSL_RPATH=\"@loader_path/../../../..\"\n\nLIBTLS_FILENAME=$(basename `readlink \"${LIBRESSL_LIB_DIR}/libtls.dylib\"`)\nLIBTLS_FILE=\"${LIBRESSL_LIB_DIR}/${LIBTLS_FILENAME}\"\nLIBTLS_OLD_NAME=\"${LIBTLS_FILE}\"\nLIBTLS_NEW_NAME=\"@rpath/${LIBRARIES_FOLDER_PATH}/${LIBTLS_FILENAME}\"\nLIBTLS_RPATH=\"@loader_path/../../../..\"\n\nOPENSSL_FILE=\"${LIBRESSL_BIN_DIR}/openssl\"\nOPENSSL_RPATH=\"@loader_path/../../../..\"\n\n# Change the name in libcrypto\ninstall_name_tool -id \"${LIBCRYPTO_NEW_NAME}\" \"${LIBCRYPTO_FILE}\"\n\n# Change the name, dependent library names, and add the rpath in libssl\ninstall_name_tool -change \"${LIBCRYPTO_OLD_NAME}\" \"${LIBCRYPTO_NEW_NAME}\" -id \"${LIBSSL_NEW_NAME}\" -add_rpath \"${LIBSSL_RPATH}\" \"${LIBSSL_FILE}\"\n\n# Change the name, dependent library names and add the rpath in libtls\ninstall_name_tool -change \"${LIBCRYPTO_OLD_NAME}\" \"${LIBCRYPTO_NEW_NAME}\" -change \"${LIBSSL_OLD_NAME}\" \"${LIBSSL_NEW_NAME}\" -id \"${LIBTLS_NEW_NAME}\" -add_rpath \"${LIBTLS_RPATH}\" \"${LIBTLS_FILE}\"\n\n# Change dependent library names and add the rpath in openssl\ninstall_name_tool -change \"${LIBCRYPTO_OLD_NAME}\" \"${LIBCRYPTO_NEW_NAME}\" -change \"${LIBSSL_OLD_NAME}\" \"${LIBSSL_NEW_NAME}\" -add_rpath \"${OPENSSL_RPATH}\" \"${OPENSSL_FILE}\"\n";
+		};
+		D76394961BF8AD3E00F7CF55 /* Create Custom Structure */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Create Custom Structure";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -ev\n\n# Create a Support directory\n/bin/mkdir -p \"${TARGET_BUILD_DIR}/${SUPPORT_FOLDER_PATH}\"\n/bin/ln -sfh \"Versions/Current/${SUPPORT_FOLDER_NAME}\" \"${TARGET_BUILD_DIR}/${WRAPPER_NAME}/${SUPPORT_FOLDER_NAME}\"\n\n# Create a Libraries directory\n/bin/mkdir -p \"${TARGET_BUILD_DIR}/${LIBRARIES_FOLDER_PATH}\"\n";
+		};
 		D765113A1BBE8F31004D9EEF /* Copy & Open Target Build Directory */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 8;
@@ -174,7 +234,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "echo \"${TARGET_BUILD_DIR}\" | pbcopy\nopen \"${TARGET_BUILD_DIR}\"\n";
+			shellScript = "set -ev\n\necho \"${TARGET_BUILD_DIR}\" | pbcopy\nopen \"${TARGET_BUILD_DIR}\"\n";
 		};
 		D765113D1BBE96E1004D9EEF /* Install LibreSSL Headers */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -188,7 +248,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Copy LibreSSL headers\ncp -R \"${LIBRESSL_INCLUDE_DIR}\"/* \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}\"\n\n# Modify include directives\nfind \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}\" \\( -name \"*.h\" -and ! -name \"${UMBRELLA_HEADER}\" \\) -print0 | xargs -0 sed -e 's/\\(#[[:blank:]]*include[[:blank:]]*<\\)\\(openssl\\/\\)/\\1LibreSSL\\/\\2/g' -i \"\"\n";
+			shellScript = "set -ev\n\n# Copy LibreSSL headers\ncp -R \"${LIBRESSL_INCLUDE_DIR}\"/* \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}\"\n\n# Modify include directives\nfind \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}\" \\( -name \"*.h\" -and ! -name \"${UMBRELLA_HEADER}\" \\) -print0 | xargs -0 sed -e 's/\\(#[[:blank:]]*include[[:blank:]]*<\\)\\(openssl\\/\\)/\\1LibreSSL\\/\\2/g' -i \"\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -248,12 +308,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRESSL_BIN_DIR = "${LIBRESSL_INSTALL_DIR}/bin";
 				LIBRESSL_INCLUDE_DIR = "${LIBRESSL_INSTALL_DIR}/include";
 				LIBRESSL_INSTALL_DIR = "${SRCROOT}/${LIBRESSL_PACKAGE_NAME}-install-osx";
 				LIBRESSL_LIB_DIR = "${LIBRESSL_INSTALL_DIR}/lib";
 				LIBRESSL_PACKAGE_DIR = "${SRCROOT}/${LIBRESSL_PACKAGE_NAME}";
 				LIBRESSL_PACKAGE_NAME = "libressl-${LIBRESSL_PACKAGE_VERSION}";
-				LIBRESSL_PACKAGE_VERSION = 2.3.0;
+				LIBRESSL_PACKAGE_VERSION = 2.3.10;
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -294,12 +355,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRESSL_BIN_DIR = "${LIBRESSL_INSTALL_DIR}/bin";
 				LIBRESSL_INCLUDE_DIR = "${LIBRESSL_INSTALL_DIR}/include";
 				LIBRESSL_INSTALL_DIR = "${SRCROOT}/${LIBRESSL_PACKAGE_NAME}-install-osx";
 				LIBRESSL_LIB_DIR = "${LIBRESSL_INSTALL_DIR}/lib";
 				LIBRESSL_PACKAGE_DIR = "${SRCROOT}/${LIBRESSL_PACKAGE_NAME}";
 				LIBRESSL_PACKAGE_NAME = "libressl-${LIBRESSL_PACKAGE_VERSION}";
-				LIBRESSL_PACKAGE_VERSION = 2.3.0;
+				LIBRESSL_PACKAGE_VERSION = 2.3.10;
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -320,6 +382,8 @@
 				INFOPLIST_FILE = LibreSSL/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LIBRARIES_FOLDER_NAME = Libraries;
+				LIBRARIES_FOLDER_PATH = "${CONTENTS_FOLDER_PATH}/${LIBRARIES_FOLDER_NAME}";
 				LIBRARY_SEARCH_PATHS = "$(LIBRESSL_LIB_DIR)";
 				MODULEMAP_FILE = LibreSSL/module.modulemap;
 				OTHER_LDFLAGS = (
@@ -331,6 +395,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gyazsquare.LibreSSL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORT_FOLDER_NAME = Support;
+				SUPPORT_FOLDER_PATH = "${CONTENTS_FOLDER_PATH}/${SUPPORT_FOLDER_NAME}";
 				UMBRELLA_HEADER = "${PRODUCT_NAME}.h";
 			};
 			name = Debug;
@@ -347,6 +413,8 @@
 				INFOPLIST_FILE = LibreSSL/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LIBRARIES_FOLDER_NAME = Libraries;
+				LIBRARIES_FOLDER_PATH = "${CONTENTS_FOLDER_PATH}/${LIBRARIES_FOLDER_NAME}";
 				LIBRARY_SEARCH_PATHS = "$(LIBRESSL_LIB_DIR)";
 				MODULEMAP_FILE = LibreSSL/module.modulemap;
 				OTHER_LDFLAGS = (
@@ -358,6 +426,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gyazsquare.LibreSSL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORT_FOLDER_NAME = Support;
+				SUPPORT_FOLDER_PATH = "${CONTENTS_FOLDER_PATH}/${SUPPORT_FOLDER_NAME}";
 				UMBRELLA_HEADER = "${PRODUCT_NAME}.h";
 			};
 			name = Release;

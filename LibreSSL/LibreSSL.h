@@ -12,11 +12,11 @@ extern "C" {
 
 #include <LibreSSL/openssl/opensslfeatures.h>
 #include <LibreSSL/openssl/opensslconf.h>
-    
+
 #include <LibreSSL/openssl/crypto.h>
 #include <LibreSSL/openssl/ssl.h>
 #include <LibreSSL/tls.h>
-    
+
 #include <LibreSSL/openssl/aes.h>
 #include <LibreSSL/openssl/asn1.h>
 #include <LibreSSL/openssl/asn1_mac.h>
@@ -35,7 +35,6 @@ extern "C" {
 #include <LibreSSL/openssl/comp.h>
 #include <LibreSSL/openssl/conf.h>
 #include <LibreSSL/openssl/conf_api.h>
-#include <LibreSSL/openssl/crypto.h>
 #include <LibreSSL/openssl/des.h>
 #include <LibreSSL/openssl/dh.h>
 #include <LibreSSL/openssl/dsa.h>
