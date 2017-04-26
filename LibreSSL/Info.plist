@@ -15,13 +15,13 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0.1 (LibreSSL $(LIBRESSL_PACKAGE_VERSION))</string>
+	<string>$(LIBRESSL_FRAMEWORK_VERSION) (LibreSSL $(LIBRESSL_PACKAGE_VERSION))</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2015 GyazSquare Inc. All rights reserved.</string>
+	<string>Copyright © 2015-2017 GyazSquare Inc. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
 	<string></string>
 </dict>
