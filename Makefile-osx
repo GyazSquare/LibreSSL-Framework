@@ -15,7 +15,7 @@ CFLAGS=$(shell echo "$(TARGET_ARCHS)" | sed 's/ / -arch /g' | sed 's/^/-arch /g'
 LDFLAGS=$(CFLAGS)
 
 CONFIGURE=$(packagedir)/configure
-CONFIGUREFLAGS=--prefix="$(installdir)" --libdir="$(libdir)" --includedir="$(includedir)" --disable-static --disable-asm --with-openssldir="$(openssldir)"
+CONFIGUREFLAGS=--prefix="$(installdir)" --libdir="$(libdir)" --includedir="$(includedir)" --disable-asm --with-openssldir="$(openssldir)"
 
 all: clean "$(libname)"
 
