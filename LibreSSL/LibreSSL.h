@@ -29,12 +29,10 @@ extern "C" {
 #include <LibreSSL/openssl/cast.h>
 #include <LibreSSL/openssl/chacha.h>
 #include <LibreSSL/openssl/cmac.h>
-#ifndef OPENSSL_NO_CMS
-#include <LibreSSL/openssl/cms.h>
-#endif
 #include <LibreSSL/openssl/comp.h>
 #include <LibreSSL/openssl/conf.h>
 #include <LibreSSL/openssl/conf_api.h>
+#include <LibreSSL/openssl/curve25519.h>
 #include <LibreSSL/openssl/des.h>
 #include <LibreSSL/openssl/dh.h>
 #include <LibreSSL/openssl/dsa.h>
@@ -49,7 +47,6 @@ extern "C" {
 #include <LibreSSL/openssl/gost.h>
 #include <LibreSSL/openssl/hmac.h>
 #include <LibreSSL/openssl/idea.h>
-#include <LibreSSL/openssl/krb5_asn.h>
 #include <LibreSSL/openssl/lhash.h>
 #include <LibreSSL/openssl/md4.h>
 #include <LibreSSL/openssl/md5.h>
