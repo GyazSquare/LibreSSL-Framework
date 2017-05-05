@@ -1814,7 +1814,6 @@ OPENSSL_cleanse
 OPENSSL_config
 OPENSSL_cpu_caps
 OPENSSL_cpuid_setup
-OPENSSL_ia32cap_P
 OPENSSL_init
 OPENSSL_load_builtin_modules
 OPENSSL_no_config
@@ -3443,7 +3442,3 @@ v2i_ASN1_BIT_STRING
 v2i_GENERAL_NAME
 v2i_GENERAL_NAMES
 v2i_GENERAL_NAME_ex
-explicit_bzero
-reallocarray
-recallocarray
-timingsafe_memcmp
