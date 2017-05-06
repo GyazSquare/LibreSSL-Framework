@@ -1,8 +1,8 @@
-diff -crN libressl-2.5.3.orig/apps/openssl/Makefile.in libressl-2.5.3/apps/openssl/Makefile.in
-*** libressl-2.5.3.orig/apps/openssl/Makefile.in	2017-04-08 19:31:43.000000000 +0900
---- libressl-2.5.3/apps/openssl/Makefile.in	2017-04-24 21:53:19.000000000 +0900
+diff -crN libressl-2.5.4.orig/apps/openssl/Makefile.in libressl-2.5.4/apps/openssl/Makefile.in
+*** libressl-2.5.4.orig/apps/openssl/Makefile.in	2017-05-01 13:09:15.000000000 +0900
+--- libressl-2.5.4/apps/openssl/Makefile.in	2017-05-05 11:00:45.000000000 +0900
 ***************
-*** 842,872 ****
+*** 843,873 ****
   
   
   install-exec-hook:
@@ -34,7 +34,7 @@ diff -crN libressl-2.5.3.orig/apps/openssl/Makefile.in libressl-2.5.3/apps/opens
   
   # Tell versions [3.59,3.63) of GNU make to not export all variables.
   # Otherwise a system limit (for SysV at least) may be exceeded.
---- 842,872 ----
+--- 843,873 ----
   
   
   install-exec-hook:
