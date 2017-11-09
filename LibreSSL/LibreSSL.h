@@ -45,6 +45,7 @@ extern "C" {
 #include <LibreSSL/openssl/err.h>
 #include <LibreSSL/openssl/evp.h>
 #include <LibreSSL/openssl/gost.h>
+#include <LibreSSL/openssl/hkdf.h>
 #include <LibreSSL/openssl/hmac.h>
 #include <LibreSSL/openssl/idea.h>
 #include <LibreSSL/openssl/lhash.h>
