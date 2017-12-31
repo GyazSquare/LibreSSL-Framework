@@ -1,6 +1,6 @@
-diff -crN libressl-2.6.3.orig/apps/openssl/Makefile.in libressl-2.6.3/apps/openssl/Makefile.in
-*** libressl-2.6.3.orig/apps/openssl/Makefile.in	2017-11-06 08:15:43.000000000 +0900
---- libressl-2.6.3/apps/openssl/Makefile.in	2017-11-08 21:59:40.000000000 +0900
+diff -crN libressl-2.6.4.orig/apps/openssl/Makefile.in libressl-2.6.4/apps/openssl/Makefile.in
+*** libressl-2.6.4.orig/apps/openssl/Makefile.in	2017-12-12 18:48:28.000000000 +0900
+--- libressl-2.6.4/apps/openssl/Makefile.in	2017-12-31 17:51:58.000000000 +0900
 ***************
 *** 842,872 ****
   
