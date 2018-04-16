@@ -1,0 +1,68 @@
+diff -crN libressl-2.7.2.orig/apps/openssl/Makefile.in libressl-2.7.2/apps/openssl/Makefile.in
+*** libressl-2.7.2.orig/apps/openssl/Makefile.in	2018-04-01 11:14:51.000000000 +0900
+--- libressl-2.7.2/apps/openssl/Makefile.in	2018-04-15 21:23:24.000000000 +0900
+***************
+*** 847,877 ****
+  
+  
+  install-exec-hook:
+! 	@if [ "@OPENSSLDIR@x" != "x" ]; then \
+! 		OPENSSLDIR="$(DESTDIR)@OPENSSLDIR@"; \
+! 	else \
+! 		OPENSSLDIR="$(DESTDIR)$(sysconfdir)/ssl"; \
+! 	fi; \
+! 	mkdir -p "$$OPENSSLDIR/certs"; \
+! 	for i in cert.pem openssl.cnf x509v3.cnf; do \
+! 		if [ ! -f "$$OPENSSLDIR/$i" ]; then \
+! 			$(INSTALL) -m 644 "$(srcdir)/$$i" "$$OPENSSLDIR/$$i"; \
+! 		else \
+! 			echo " $$OPENSSLDIR/$$i already exists, install will not overwrite"; \
+! 		fi \
+! 	done
+  
+  uninstall-local:
+! 	@if [ "@OPENSSLDIR@x" != "x" ]; then \
+! 		OPENSSLDIR="$(DESTDIR)@OPENSSLDIR@"; \
+! 	else \
+! 		OPENSSLDIR="$(DESTDIR)$(sysconfdir)/ssl"; \
+! 	fi; \
+! 	for i in cert.pem openssl.cnf x509v3.cnf; do \
+! 		if cmp -s "$$OPENSSLDIR/$$i" "$(srcdir)/$$i"; then \
+! 			rm -f "$$OPENSSLDIR/$$i"; \
+! 		fi \
+! 	done
+  
+  # Tell versions [3.59,3.63) of GNU make to not export all variables.
+  # Otherwise a system limit (for SysV at least) may be exceeded.
+--- 847,877 ----
+  
+  
+  install-exec-hook:
+! 	# @if [ "@OPENSSLDIR@x" != "x" ]; then \
+! 	# 	OPENSSLDIR="$(DESTDIR)@OPENSSLDIR@"; \
+! 	# else \
+! 	# 	OPENSSLDIR="$(DESTDIR)$(sysconfdir)/ssl"; \
+! 	# fi; \
+! 	# mkdir -p "$$OPENSSLDIR/certs"; \
+! 	# for i in cert.pem openssl.cnf x509v3.cnf; do \
+! 	# 	if [ ! -f "$$OPENSSLDIR/$i" ]; then \
+! 	# 		$(INSTALL) -m 644 "$(srcdir)/$$i" "$$OPENSSLDIR/$$i"; \
+! 	# 	else \
+! 	# 		echo " $$OPENSSLDIR/$$i already exists, install will not overwrite"; \
+! 	# 	fi \
+! 	# done
+  
+  uninstall-local:
+! 	# @if [ "@OPENSSLDIR@x" != "x" ]; then \
+! 	# 	OPENSSLDIR="$(DESTDIR)@OPENSSLDIR@"; \
+! 	# else \
+! 	# 	OPENSSLDIR="$(DESTDIR)$(sysconfdir)/ssl"; \
+! 	# fi; \
+! 	# for i in cert.pem openssl.cnf x509v3.cnf; do \
+! 	# 	if cmp -s "$$OPENSSLDIR/$$i" "$(srcdir)/$$i"; then \
+! 	# 		rm -f "$$OPENSSLDIR/$$i"; \
+! 	# 	fi \
+! 	# done
+  
+  # Tell versions [3.59,3.63) of GNU make to not export all variables.
+  # Otherwise a system limit (for SysV at least) may be exceeded.
