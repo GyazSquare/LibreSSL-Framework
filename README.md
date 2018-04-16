@@ -33,6 +33,6 @@ LibreSSL framework files are retained under the copyright of the authors. New ad
 
 The LibreSSL code is distributed under the terms of the original LibreSSL licenses. See the LICENSE file for more info.
 
-<hr style="height: 1px !important;">
+---
 
 \* Building for 32-bit architecture on macOS emits a warning with Xcode 9.3 or later.
