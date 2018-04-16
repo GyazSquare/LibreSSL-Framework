@@ -11,7 +11,7 @@ LibreSSL framework is a porting framework of [LibreSSL](http://www.libressl.org)
 * Xcode 9.3 (9E145)
 * Base SDK: OS X 10.13
 * Deployment Target: OS X 10.6
-* Architectures: x86_64, i386[^1]
+* Architectures: x86_64, i386 *
 
 ## Installation
 
@@ -33,4 +33,6 @@ LibreSSL framework files are retained under the copyright of the authors. New ad
 
 The LibreSSL code is distributed under the terms of the original LibreSSL licenses. See the LICENSE file for more info.
 
-[^1]: Building for 32-bit architecture on macOS emits a warning with Xcode 9.3 or later.
+---
+
+\* Building for 32-bit architecture on macOS emits a warning with Xcode 9.3 or later.
