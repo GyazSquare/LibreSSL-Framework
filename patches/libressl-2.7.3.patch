@@ -1,0 +1,58 @@
+diff -uprN libressl-2.7.3.orig/apps/openssl/Makefile.in libressl-2.7.3/apps/openssl/Makefile.in
+--- libressl-2.7.3.orig/apps/openssl/Makefile.in	2018-05-03 12:38:41.000000000 +0900
++++ libressl-2.7.3/apps/openssl/Makefile.in	2018-05-06 19:27:20.000000000 +0900
+@@ -847,31 +847,31 @@ uninstall-man: uninstall-man1
+ 
+ 
+ install-exec-hook:
+-	@if [ "@OPENSSLDIR@x" != "x" ]; then \
+-		OPENSSLDIR="$(DESTDIR)@OPENSSLDIR@"; \
+-	else \
+-		OPENSSLDIR="$(DESTDIR)$(sysconfdir)/ssl"; \
+-	fi; \
+-	mkdir -p "$$OPENSSLDIR/certs"; \
+-	for i in cert.pem openssl.cnf x509v3.cnf; do \
+-		if [ ! -f "$$OPENSSLDIR/$i" ]; then \
+-			$(INSTALL) -m 644 "$(srcdir)/$$i" "$$OPENSSLDIR/$$i"; \
+-		else \
+-			echo " $$OPENSSLDIR/$$i already exists, install will not overwrite"; \
+-		fi \
+-	done
++	# @if [ "@OPENSSLDIR@x" != "x" ]; then \
++	# 	OPENSSLDIR="$(DESTDIR)@OPENSSLDIR@"; \
++	# else \
++	# 	OPENSSLDIR="$(DESTDIR)$(sysconfdir)/ssl"; \
++	# fi; \
++	# mkdir -p "$$OPENSSLDIR/certs"; \
++	# for i in cert.pem openssl.cnf x509v3.cnf; do \
++	# 	if [ ! -f "$$OPENSSLDIR/$i" ]; then \
++	# 		$(INSTALL) -m 644 "$(srcdir)/$$i" "$$OPENSSLDIR/$$i"; \
++	# 	else \
++	# 		echo " $$OPENSSLDIR/$$i already exists, install will not overwrite"; \
++	# 	fi \
++	# done
+ 
+ uninstall-local:
+-	@if [ "@OPENSSLDIR@x" != "x" ]; then \
+-		OPENSSLDIR="$(DESTDIR)@OPENSSLDIR@"; \
+-	else \
+-		OPENSSLDIR="$(DESTDIR)$(sysconfdir)/ssl"; \
+-	fi; \
+-	for i in cert.pem openssl.cnf x509v3.cnf; do \
+-		if cmp -s "$$OPENSSLDIR/$$i" "$(srcdir)/$$i"; then \
+-			rm -f "$$OPENSSLDIR/$$i"; \
+-		fi \
+-	done
++	# @if [ "@OPENSSLDIR@x" != "x" ]; then \
++	# 	OPENSSLDIR="$(DESTDIR)@OPENSSLDIR@"; \
++	# else \
++	# 	OPENSSLDIR="$(DESTDIR)$(sysconfdir)/ssl"; \
++	# fi; \
++	# for i in cert.pem openssl.cnf x509v3.cnf; do \
++	# 	if cmp -s "$$OPENSSLDIR/$$i" "$(srcdir)/$$i"; then \
++	# 		rm -f "$$OPENSSLDIR/$$i"; \
++	# 	fi \
++	# done
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
