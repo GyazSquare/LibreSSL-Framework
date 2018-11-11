@@ -1,5 +1,5 @@
 packagedir=$(LIBRESSL_PACKAGE_DIR)
-builddir=$(packagedir)
+builddir=$(LIBRESSL_BUILD_DIR)
 installdir=$(LIBRESSL_INSTALL_DIR)
 libdir=$(LIBRESSL_LIB_DIR)
 includedir=$(LIBRESSL_INCLUDE_DIR)
@@ -7,7 +7,7 @@ libname=libressl.$(LIBRESSL_PACKAGE_VERSION).dylib
 openssldir=$(shell /usr/bin/openssl version -d | awk -F'"' '{ print $$2 }')
 
 ifeq ($(ONLY_ACTIVE_ARCH),YES)
-TARGET_ARCHS="$(arch)"
+TARGET_ARCHS="$(shell /usr/bin/uname -m)"
 else
 TARGET_ARCHS="$(ARCHS)"
 endif
@@ -21,11 +21,14 @@ all: clean "$(libname)"
 
 install: clean "$(libname)"
 
-"$(libname)": "$(installdir)"
+"$(libname)": "$(builddir)" "$(installdir)"
 	cd "$(builddir)" && \
 CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)" $(CONFIGURE) $(CONFIGUREFLAGS) && \
 make check && \
 make install
+
+"$(builddir)":
+	mkdir -p "$(builddir)"
 
 "$(installdir)":
 	mkdir -p "$(installdir)"

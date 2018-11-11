@@ -11,11 +11,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D7F8C5281BBBCEAE0091CDB6 /* PBXContainerItemProxy */ = {
+		D701D7F52180A3B60074DBEF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D7B1D7121BBAB8B500EE962A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D7B1D7261BBABA6800EE962A;
+			remoteGlobalIDString = D701D7F12180A33F0074DBEF;
 			remoteInfo = libressl;
 		};
 /* End PBXContainerItemProxy section */
@@ -78,10 +78,10 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXLegacyTarget section */
-		D7B1D7261BBABA6800EE962A /* libressl */ = {
+		D701D7F12180A33F0074DBEF /* libressl */ = {
 			isa = PBXLegacyTarget;
 			buildArgumentsString = "-f Makefile-osx $(ACTION)";
-			buildConfigurationList = D7B1D7271BBABA6800EE962A /* Build configuration list for PBXLegacyTarget "libressl" */;
+			buildConfigurationList = D701D7F42180A33F0074DBEF /* Build configuration list for PBXLegacyTarget "libressl" */;
 			buildPhases = (
 			);
 			buildToolPath = /usr/bin/make;
@@ -114,7 +114,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				D7F8C5291BBBCEAE0091CDB6 /* PBXTargetDependency */,
+				D701D7F62180A3B60074DBEF /* PBXTargetDependency */,
 			);
 			name = LibreSSL;
 			productName = LibreSSL;
@@ -127,13 +127,14 @@
 		D7B1D7121BBAB8B500EE962A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "GyazSquare Inc.";
 				TargetAttributes = {
-					D7B1D71A1BBAB8B500EE962A = {
-						CreatedOnToolsVersion = 7.0.1;
+					D701D7F12180A33F0074DBEF = {
+						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
 					};
-					D7B1D7261BBABA6800EE962A = {
+					D7B1D71A1BBAB8B500EE962A = {
 						CreatedOnToolsVersion = 7.0.1;
 					};
 				};
@@ -150,7 +151,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D7B1D7261BBABA6800EE962A /* libressl */,
+				D701D7F12180A33F0074DBEF /* libressl */,
 				D7B1D71A1BBAB8B500EE962A /* LibreSSL */,
 			);
 		};
@@ -278,19 +279,60 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D7F8C5291BBBCEAE0091CDB6 /* PBXTargetDependency */ = {
+		D701D7F62180A3B60074DBEF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D7B1D7261BBABA6800EE962A /* libressl */;
-			targetProxy = D7F8C5281BBBCEAE0091CDB6 /* PBXContainerItemProxy */;
+			target = D701D7F12180A33F0074DBEF /* libressl */;
+			targetProxy = D701D7F52180A3B60074DBEF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		D701D7F22180A33F0074DBEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D701D7F32180A33F0074DBEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		D7B1D7211BBAB8B500EE962A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -334,9 +376,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LIBRESSL_BIN_DIR = "${LIBRESSL_INSTALL_DIR}/bin";
+				LIBRESSL_BUILD_DIR = "${CONFIGURATION_TEMP_DIR}/${LIBRESSL_PACKAGE_NAME}.build";
 				LIBRESSL_FRAMEWORK_VERSION = 3.5.0;
 				LIBRESSL_INCLUDE_DIR = "${LIBRESSL_INSTALL_DIR}/include";
-				LIBRESSL_INSTALL_DIR = "${SRCROOT}/${LIBRESSL_PACKAGE_NAME}-install-osx";
+				LIBRESSL_INSTALL_DIR = "${CONFIGURATION_TEMP_DIR}/${LIBRESSL_PACKAGE_NAME}.install";
 				LIBRESSL_LIB_DIR = "${LIBRESSL_INSTALL_DIR}/lib";
 				LIBRESSL_MAN_DIR = "${LIBRESSL_SHARE_DIR}/man";
 				LIBRESSL_PACKAGE_DIR = "${SRCROOT}/${LIBRESSL_PACKAGE_NAME}";
@@ -356,7 +399,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -394,9 +436,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LIBRESSL_BIN_DIR = "${LIBRESSL_INSTALL_DIR}/bin";
+				LIBRESSL_BUILD_DIR = "${CONFIGURATION_TEMP_DIR}/${LIBRESSL_PACKAGE_NAME}.build";
 				LIBRESSL_FRAMEWORK_VERSION = 3.5.0;
 				LIBRESSL_INCLUDE_DIR = "${LIBRESSL_INSTALL_DIR}/include";
-				LIBRESSL_INSTALL_DIR = "${SRCROOT}/${LIBRESSL_PACKAGE_NAME}-install-osx";
+				LIBRESSL_INSTALL_DIR = "${CONFIGURATION_TEMP_DIR}/${LIBRESSL_PACKAGE_NAME}.install";
 				LIBRESSL_LIB_DIR = "${LIBRESSL_INSTALL_DIR}/lib";
 				LIBRESSL_MAN_DIR = "${LIBRESSL_SHARE_DIR}/man";
 				LIBRESSL_PACKAGE_DIR = "${SRCROOT}/${LIBRESSL_PACKAGE_NAME}";
@@ -477,28 +520,18 @@
 			};
 			name = Release;
 		};
-		D7B1D7281BBABA6800EE962A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEBUGGING_SYMBOLS = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		D7B1D7291BBABA6800EE962A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D701D7F42180A33F0074DBEF /* Build configuration list for PBXLegacyTarget "libressl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D701D7F22180A33F0074DBEF /* Debug */,
+				D701D7F32180A33F0074DBEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D7B1D7151BBAB8B500EE962A /* Build configuration list for PBXProject "LibreSSL-OSX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -513,15 +546,6 @@
 			buildConfigurations = (
 				D7B1D7241BBAB8B500EE962A /* Debug */,
 				D7B1D7251BBAB8B500EE962A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D7B1D7271BBABA6800EE962A /* Build configuration list for PBXLegacyTarget "libressl" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D7B1D7281BBABA6800EE962A /* Debug */,
-				D7B1D7291BBABA6800EE962A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
