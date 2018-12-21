@@ -100,7 +100,6 @@
 			buildConfigurationList = D7B1D7231BBAB8B500EE962A /* Build configuration list for PBXNativeTarget "LibreSSL" */;
 			buildPhases = (
 				D74EF8331E3780810051633E /* Change Install names */,
-				D76394961BF8AD3E00F7CF55 /* Create Custom Structure */,
 				D7B1D7161BBAB8B500EE962A /* Sources */,
 				D7B1D7171BBAB8B500EE962A /* Frameworks */,
 				D7B1D7181BBAB8B500EE962A /* Headers */,
@@ -178,7 +177,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -ev\n\n# Copy the LibreSSL libraries\ncp -R \"${LIBRESSL_LIB_DIR}\"/lib*.dylib \"${TARGET_BUILD_DIR}/${LIBRARIES_FOLDER_PATH}\"\n";
+			shellScript = "set -ev\n\n# Copy the LibreSSL libraries\nfind \"${LIBRESSL_LIB_DIR}\" \\( -name lib*.dylib -and ! -type l \\) -print0 | xargs -0 -J % cp -R % \"${TARGET_BUILD_DIR}/${CONTENTS_FOLDER_PATH}\"\n\n# Make the LibreSSL libraries links\nln -sfh \"${TARGET_BUILD_DIR}/${CONTENTS_FOLDER_PATH}\"/* \"${CONFIGURATION_BUILD_DIR}/${WRAPPER_NAME}\"\n";
 		};
 		D74EF8331E3780810051633E /* Change Install names */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -192,21 +191,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -ev\n\nLIBCRYPTO_FILENAME=$(basename `readlink \"${LIBRESSL_LIB_DIR}/libcrypto.dylib\"`)\nLIBCRYPTO_FILE=\"${LIBRESSL_LIB_DIR}/${LIBCRYPTO_FILENAME}\"\nLIBCRYPTO_OLD_NAME=\"${LIBCRYPTO_FILE}\"\nLIBCRYPTO_NEW_NAME=\"@rpath/${LIBRARIES_FOLDER_PATH}/${LIBCRYPTO_FILENAME}\"\n\nLIBSSL_FILENAME=$(basename `readlink \"${LIBRESSL_LIB_DIR}/libssl.dylib\"`)\nLIBSSL_FILE=\"${LIBRESSL_LIB_DIR}/${LIBSSL_FILENAME}\"\nLIBSSL_OLD_NAME=\"${LIBSSL_FILE}\"\nLIBSSL_NEW_NAME=\"@rpath/${LIBRARIES_FOLDER_PATH}/${LIBSSL_FILENAME}\"\nLIBSSL_RPATH=\"@loader_path/../../../..\"\n\nLIBTLS_FILENAME=$(basename `readlink \"${LIBRESSL_LIB_DIR}/libtls.dylib\"`)\nLIBTLS_FILE=\"${LIBRESSL_LIB_DIR}/${LIBTLS_FILENAME}\"\nLIBTLS_NEW_NAME=\"@rpath/${LIBRARIES_FOLDER_PATH}/${LIBTLS_FILENAME}\"\nLIBTLS_RPATH=\"@loader_path/../../../..\"\n\n# Change the name in libcrypto\ninstall_name_tool -id \"${LIBCRYPTO_NEW_NAME}\" \"${LIBCRYPTO_FILE}\"\n\n# Change the name, dependent library names, and add the rpath in libssl\ninstall_name_tool -change \"${LIBCRYPTO_OLD_NAME}\" \"${LIBCRYPTO_NEW_NAME}\" -id \"${LIBSSL_NEW_NAME}\" -add_rpath \"${LIBSSL_RPATH}\" \"${LIBSSL_FILE}\"\n\n# Change the name, dependent library names and add the rpath in libtls\ninstall_name_tool -change \"${LIBCRYPTO_OLD_NAME}\" \"${LIBCRYPTO_NEW_NAME}\" -change \"${LIBSSL_OLD_NAME}\" \"${LIBSSL_NEW_NAME}\" -id \"${LIBTLS_NEW_NAME}\" -add_rpath \"${LIBTLS_RPATH}\" \"${LIBTLS_FILE}\"\n";
-		};
-		D76394961BF8AD3E00F7CF55 /* Create Custom Structure */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Create Custom Structure";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -ev\n\n# Create the Libraries directory\n/bin/mkdir -p \"${TARGET_BUILD_DIR}/${LIBRARIES_FOLDER_PATH}\"\n";
+			shellScript = "set -ev\n\nLIBCRYPTO_FILENAME=$(basename `readlink \"${LIBRESSL_LIB_DIR}/libcrypto.dylib\"`)\nLIBCRYPTO_FILE=\"${LIBRESSL_LIB_DIR}/${LIBCRYPTO_FILENAME}\"\nLIBCRYPTO_OLD_NAME=\"${LIBCRYPTO_FILE}\"\nLIBCRYPTO_NEW_NAME=\"@rpath/${LIBCRYPTO_FILENAME}\"\n\nLIBSSL_FILENAME=$(basename `readlink \"${LIBRESSL_LIB_DIR}/libssl.dylib\"`)\nLIBSSL_FILE=\"${LIBRESSL_LIB_DIR}/${LIBSSL_FILENAME}\"\nLIBSSL_OLD_NAME=\"${LIBSSL_FILE}\"\nLIBSSL_NEW_NAME=\"@rpath/${LIBSSL_FILENAME}\"\nLIBSSL_RPATH=\"@loader_path/../../../..\"\n\nLIBTLS_FILENAME=$(basename `readlink \"${LIBRESSL_LIB_DIR}/libtls.dylib\"`)\nLIBTLS_FILE=\"${LIBRESSL_LIB_DIR}/${LIBTLS_FILENAME}\"\nLIBTLS_NEW_NAME=\"@rpath/${LIBTLS_FILENAME}\"\nLIBTLS_RPATH=\"@loader_path/../../../..\"\n\n# Change the name in libcrypto\ninstall_name_tool -id \"${LIBCRYPTO_NEW_NAME}\" \"${LIBCRYPTO_FILE}\"\n\n# Change the name, dependent library names, and add the rpath in libssl\ninstall_name_tool -change \"${LIBCRYPTO_OLD_NAME}\" \"${LIBCRYPTO_NEW_NAME}\" -id \"${LIBSSL_NEW_NAME}\" -add_rpath \"${LIBSSL_RPATH}\" \"${LIBSSL_FILE}\"\n\n# Change the name, dependent library names and add the rpath in libtls\ninstall_name_tool -change \"${LIBCRYPTO_OLD_NAME}\" \"${LIBCRYPTO_NEW_NAME}\" -change \"${LIBSSL_OLD_NAME}\" \"${LIBSSL_NEW_NAME}\" -id \"${LIBTLS_NEW_NAME}\" -add_rpath \"${LIBTLS_RPATH}\" \"${LIBTLS_FILE}\"\n";
 		};
 		D765113A1BBE8F31004D9EEF /* Copy & Open Target Build Directory */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -430,8 +415,6 @@
 				INFOPLIST_FILE = LibreSSL/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				LIBRARIES_FOLDER_NAME = Libraries;
-				LIBRARIES_FOLDER_PATH = "${CONTENTS_FOLDER_PATH}/${LIBRARIES_FOLDER_NAME}";
 				LIBRARY_SEARCH_PATHS = "$(LIBRESSL_LIB_DIR)";
 				MODULEMAP_FILE = LibreSSL/module.modulemap;
 				OTHER_LDFLAGS = (
@@ -459,8 +442,6 @@
 				INFOPLIST_FILE = LibreSSL/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				LIBRARIES_FOLDER_NAME = Libraries;
-				LIBRARIES_FOLDER_PATH = "${CONTENTS_FOLDER_PATH}/${LIBRARIES_FOLDER_NAME}";
 				LIBRARY_SEARCH_PATHS = "$(LIBRESSL_LIB_DIR)";
 				MODULEMAP_FILE = LibreSSL/module.modulemap;
 				OTHER_LDFLAGS = (
