@@ -3,7 +3,6 @@ builddir=$(LIBRESSL_BUILD_DIR)
 installdir=$(LIBRESSL_INSTALL_DIR)
 libdir=$(LIBRESSL_LIB_DIR)
 includedir=$(LIBRESSL_INCLUDE_DIR)
-libname=libressl.$(LIBRESSL_PACKAGE_VERSION).dylib
 openssldir=$(shell /usr/bin/openssl version -d | awk -F'"' '{ print $$2 }')
 
 ifeq ($(ONLY_ACTIVE_ARCH),YES)
@@ -15,17 +14,27 @@ CFLAGS=$(shell echo "$(TARGET_ARCHS)" | sed 's/ / -arch /g' | sed 's/^/-arch /g'
 LDFLAGS=$(CFLAGS)
 
 CONFIGURE=$(packagedir)/configure
-CONFIGUREFLAGS=--prefix="$(installdir)" --libdir="$(libdir)" --includedir="$(includedir)" --enable-nc --disable-asm --with-openssldir="$(openssldir)"
+CONFIGUREFLAGS=--prefix="$(installdir)" --libdir="$(libdir)" --includedir="$(includedir)" --disable-nc --disable-asm --with-openssldir="$(openssldir)"
 
-all: clean "$(libname)"
+all: install
 
-install: clean "$(libname)"
-
-"$(libname)": "$(builddir)" "$(installdir)"
+clean:
+	-rm -fr - "$(installdir)" && \
 	cd "$(builddir)" && \
-CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)" $(CONFIGURE) $(CONFIGUREFLAGS) && \
-make check && \
-make install
+	make distclean || true
+
+install: clean test "$(installdir)"
+	cd "$(builddir)" && \
+	make install
+
+test: libressl
+	cd "$(builddir)" && \
+	make check
+
+libressl: "$(builddir)"
+	cd "$(builddir)" && \
+	CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)" $(CONFIGURE) $(CONFIGUREFLAGS) && \
+	make
 
 "$(builddir)":
 	mkdir -p "$(builddir)"
@@ -33,8 +42,4 @@ make install
 "$(installdir)":
 	mkdir -p "$(installdir)"
 
-clean:
-	-rm -fr - "$(installdir)" && \
-cd "$(builddir)" && make distclean || true
-
-.PHONY: "$(libname)" all clean install
+.PHONY: all clean install test libressl
