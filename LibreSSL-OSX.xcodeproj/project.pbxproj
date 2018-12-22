@@ -177,7 +177,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -ev\n\n# Copy the LibreSSL libraries\nfind \"${LIBRESSL_LIB_DIR}\" \\( -name lib*.dylib -and ! -type l \\) -print0 | xargs -0 -J % cp -R % \"${TARGET_BUILD_DIR}/${CONTENTS_FOLDER_PATH}\"\n\n# Make the LibreSSL libraries links\nln -sf \"${TARGET_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/lib*.dylib\" \"${CONFIGURATION_BUILD_DIR}/${WRAPPER_NAME}\"\n";
+			shellScript = "set -ev\n\n# Copy the LibreSSL libraries\nfind \"${LIBRESSL_LIB_DIR}\" \\( -name lib*.dylib -and ! -type l \\) -print0 | xargs -0 -J % cp -R % \"${TARGET_BUILD_DIR}/${CONTENTS_FOLDER_PATH}\"\n\n# Make the LibreSSL libraries links\ncd \"${TARGET_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/../..\" && ln -sf Versions/Current/lib*.dylib .\n";
 		};
 		D74EF8331E3780810051633E /* Change Install names */ = {
 			isa = PBXShellScriptBuildPhase;
