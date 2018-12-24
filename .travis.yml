@@ -1,5 +1,6 @@
-language: objective-c
+os: osx
 osx_image: xcode10.1
+language: objective-c
 xcode_project: LibreSSL-OSX.xcodeproj
 xcode_scheme: LibreSSL
 xcode_sdk: macosx10.14
