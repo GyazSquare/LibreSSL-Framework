@@ -3,24 +3,3 @@
 *.xccheckout
 *.xcscmblueprint
 *.xcuserdatad
-
-# libressl-x.x.x
-libressl-[0-9].[0-9].[0-9]/**/.deps/
-libressl-[0-9].[0-9].[0-9]/**/.dirstamp
-libressl-[0-9].[0-9].[0-9]/**/.libs/
-libressl-[0-9].[0-9].[0-9]/**/*.cache
-libressl-[0-9].[0-9].[0-9]/**/*.la
-libressl-[0-9].[0-9].[0-9]/**/*.lo
-libressl-[0-9].[0-9].[0-9]/**/*.o
-libressl-[0-9].[0-9].[0-9]/**/*.pc
-libressl-[0-9].[0-9].[0-9]/**/*.sym
-libressl-[0-9].[0-9].[0-9]/**/config.*
-libressl-[0-9].[0-9].[0-9]/**/libtool
-libressl-[0-9].[0-9].[0-9]/**/Makefile
-libressl-[0-9].[0-9].[0-9]/**/nc
-libressl-[0-9].[0-9].[0-9]/**/ocspcheck
-libressl-[0-9].[0-9].[0-9]/**/openssl
-libressl-[0-9].[0-9].[0-9]/**/tests/
-
-# libressl-x.y.z-install
-libressl-[0-9].[0-9].[0-9]-install*
