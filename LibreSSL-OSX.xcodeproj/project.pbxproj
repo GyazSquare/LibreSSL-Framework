@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D78B971E21CFE26A002779F4 /* LibreSSLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D78B971D21CFE26A002779F4 /* LibreSSLTests.m */; };
 		D7B1D71F1BBAB8B500EE962A /* LibreSSL.h in Headers */ = {isa = PBXBuildFile; fileRef = D7B1D71E1BBAB8B500EE962A /* LibreSSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -18,16 +19,33 @@
 			remoteGlobalIDString = D701D7F12180A33F0074DBEF;
 			remoteInfo = libressl;
 		};
+		D78B972121CFE26A002779F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D7B1D7121BBAB8B500EE962A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D7B1D71A1BBAB8B500EE962A;
+			remoteInfo = LibreSSL;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		D732D8091BC49F5C007B455C /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		D78B971B21CFE26A002779F4 /* LibreSSLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LibreSSLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D78B971D21CFE26A002779F4 /* LibreSSLTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LibreSSLTests.m; sourceTree = "<group>"; };
+		D78B971F21CFE26A002779F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7B1D71B1BBAB8B500EE962A /* LibreSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LibreSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7B1D71E1BBAB8B500EE962A /* LibreSSL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibreSSL.h; sourceTree = "<group>"; };
 		D7B1D7201BBAB8B500EE962A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D78B971821CFE26A002779F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D7B1D7171BBAB8B500EE962A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -38,10 +56,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D78B971C21CFE26A002779F4 /* LibreSSLTests */ = {
+			isa = PBXGroup;
+			children = (
+				D78B971D21CFE26A002779F4 /* LibreSSLTests.m */,
+				D78B971F21CFE26A002779F4 /* Info.plist */,
+			);
+			path = LibreSSLTests;
+			sourceTree = "<group>";
+		};
 		D7B1D7111BBAB8B500EE962A = {
 			isa = PBXGroup;
 			children = (
 				D7B1D71D1BBAB8B500EE962A /* LibreSSL */,
+				D78B971C21CFE26A002779F4 /* LibreSSLTests */,
 				D7B1D71C1BBAB8B500EE962A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				D7B1D71B1BBAB8B500EE962A /* LibreSSL.framework */,
+				D78B971B21CFE26A002779F4 /* LibreSSLTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,6 +124,24 @@
 /* End PBXLegacyTarget section */
 
 /* Begin PBXNativeTarget section */
+		D78B971A21CFE26A002779F4 /* LibreSSLTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D78B972521CFE26A002779F4 /* Build configuration list for PBXNativeTarget "LibreSSLTests" */;
+			buildPhases = (
+				D78B971721CFE26A002779F4 /* Sources */,
+				D78B971821CFE26A002779F4 /* Frameworks */,
+				D78B971921CFE26A002779F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D78B972221CFE26A002779F4 /* PBXTargetDependency */,
+			);
+			name = LibreSSLTests;
+			productName = LibreSSLTests;
+			productReference = D78B971B21CFE26A002779F4 /* LibreSSLTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D7B1D71A1BBAB8B500EE962A /* LibreSSL */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D7B1D7231BBAB8B500EE962A /* Build configuration list for PBXNativeTarget "LibreSSL" */;
@@ -131,6 +178,9 @@
 						CreatedOnToolsVersion = 10.0;
 						ProvisioningStyle = Automatic;
 					};
+					D78B971A21CFE26A002779F4 = {
+						CreatedOnToolsVersion = 10.1;
+					};
 					D7B1D71A1BBAB8B500EE962A = {
 						CreatedOnToolsVersion = 7.0.1;
 					};
@@ -150,11 +200,19 @@
 			targets = (
 				D701D7F12180A33F0074DBEF /* libressl */,
 				D7B1D71A1BBAB8B500EE962A /* LibreSSL */,
+				D78B971A21CFE26A002779F4 /* LibreSSLTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D78B971921CFE26A002779F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D7B1D7191BBAB8B500EE962A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -224,6 +282,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D78B971721CFE26A002779F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D78B971E21CFE26A002779F4 /* LibreSSLTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D7B1D7161BBAB8B500EE962A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -238,6 +304,11 @@
 			isa = PBXTargetDependency;
 			target = D701D7F12180A33F0074DBEF /* libressl */;
 			targetProxy = D701D7F52180A3B60074DBEF /* PBXContainerItemProxy */;
+		};
+		D78B972221CFE26A002779F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D7B1D71A1BBAB8B500EE962A /* LibreSSL */;
+			targetProxy = D78B972121CFE26A002779F4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -280,6 +351,49 @@
 				MTL_FAST_MATH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D78B972321CFE26A002779F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = LibreSSLTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.LibreSSLTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D78B972421CFE26A002779F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = LibreSSLTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.LibreSSLTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -455,6 +569,15 @@
 			buildConfigurations = (
 				D701D7F22180A33F0074DBEF /* Debug */,
 				D701D7F32180A33F0074DBEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D78B972521CFE26A002779F4 /* Build configuration list for PBXNativeTarget "LibreSSLTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D78B972321CFE26A002779F4 /* Debug */,
+				D78B972421CFE26A002779F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

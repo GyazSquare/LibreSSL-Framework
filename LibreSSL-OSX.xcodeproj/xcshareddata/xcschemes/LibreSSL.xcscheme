@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D78B971A21CFE26A002779F4"
+               BuildableName = "LibreSSLTests.xctest"
+               BlueprintName = "LibreSSLTests"
+               ReferencedContainer = "container:LibreSSL-OSX.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "D7B1D71A1BBAB8B500EE962A"
+            BuildableName = "LibreSSL.framework"
+            BlueprintName = "LibreSSL"
+            ReferencedContainer = "container:LibreSSL-OSX.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
