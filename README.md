@@ -1,10 +1,12 @@
 # LibreSSL Framework
 
+[![Build Status](https://travis-ci.org/GyazSquare/LibreSSL-Framework.svg?branch=master)](https://travis-ci.org/GyazSquare/LibreSSL-Framework)
+
 LibreSSL framework is a porting framework of [LibreSSL](http://www.libressl.org) for OS X.
 
 ## LibreSSL Version
 
-[2.8.2](https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.8.2-relnotes.txt)
+[2.8.3](https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.8.3-relnotes.txt)
 
 ## Requirements
 
