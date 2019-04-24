@@ -188,10 +188,11 @@
 			};
 			buildConfigurationList = D7B1D7151BBAB8B500EE962A /* Build configuration list for PBXProject "LibreSSL-OSX" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = D7B1D7111BBAB8B500EE962A;
 			productRefGroup = D7B1D71C1BBAB8B500EE962A /* Products */;
