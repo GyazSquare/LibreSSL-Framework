@@ -19,7 +19,6 @@ extern "C" {
 
 #include <LibreSSL/openssl/aes.h>
 #include <LibreSSL/openssl/asn1.h>
-#include <LibreSSL/openssl/asn1_mac.h>
 #include <LibreSSL/openssl/asn1t.h>
 #include <LibreSSL/openssl/bio.h>
 #include <LibreSSL/openssl/blowfish.h>
@@ -69,6 +68,8 @@ extern "C" {
 #include <LibreSSL/openssl/rsa.h>
 #include <LibreSSL/openssl/safestack.h>
 #include <LibreSSL/openssl/sha.h>
+#include <LibreSSL/openssl/sm3.h>
+#include <LibreSSL/openssl/sm4.h>
 #include <LibreSSL/openssl/srtp.h>
 #include <LibreSSL/openssl/ssl2.h>
 #include <LibreSSL/openssl/ssl23.h>
