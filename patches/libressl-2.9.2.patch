@@ -1,6 +1,6 @@
-diff -uprN libressl-2.9.1.orig/apps/openssl/Makefile.in libressl-2.9.1/apps/openssl/Makefile.in
---- libressl-2.9.1.orig/apps/openssl/Makefile.in	2019-04-14 02:22:37.000000000 +0900
-+++ libressl-2.9.1/apps/openssl/Makefile.in	2019-04-25 19:35:23.000000000 +0900
+diff -uprN libressl-2.9.2.orig/apps/openssl/Makefile.in libressl-2.9.2/apps/openssl/Makefile.in
+--- libressl-2.9.2.orig/apps/openssl/Makefile.in	2019-05-16 11:26:52.000000000 +0900
++++ libressl-2.9.2/apps/openssl/Makefile.in	2019-05-25 13:43:49.000000000 +0900
 @@ -986,31 +986,31 @@ uninstall-man: uninstall-man1
  
  
