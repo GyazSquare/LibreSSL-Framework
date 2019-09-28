@@ -1,9 +1,9 @@
-osx_image: xcode10.2
+osx_image: xcode11
 language: objective-c
 xcode_project: LibreSSL-OSX.xcodeproj
 xcode_scheme: LibreSSL
 xcode_destination: platform=macOS
-xcode_sdk: macosx10.14
+xcode_sdk: macosx10.15
 before_install:
 - gem install xcpretty
 script:

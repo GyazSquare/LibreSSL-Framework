@@ -45,4 +45,10 @@
     XCTAssertTrue(TLSv1_2_client_method() != NULL);
 }
 
+- (void)testTLS_method {
+    XCTAssertTrue(TLS_method() != NULL);
+    XCTAssertTrue(TLS_server_method() != NULL);
+    XCTAssertTrue(TLS_client_method() != NULL);
+}
+
 @end
