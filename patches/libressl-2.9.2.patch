@@ -1,6 +1,6 @@
-diff -uprN libressl-2.9.2.orig/apps/openssl/Makefile.in libressl-2.9.2/apps/openssl/Makefile.in
+diff -uprN --exclude=.DS_Store libressl-2.9.2.orig/apps/openssl/Makefile.in libressl-2.9.2/apps/openssl/Makefile.in
 --- libressl-2.9.2.orig/apps/openssl/Makefile.in	2019-05-16 11:26:52.000000000 +0900
-+++ libressl-2.9.2/apps/openssl/Makefile.in	2019-05-25 13:43:49.000000000 +0900
++++ libressl-2.9.2/apps/openssl/Makefile.in	2019-05-25 14:27:36.000000000 +0900
 @@ -986,31 +986,31 @@ uninstall-man: uninstall-man1
  
  
@@ -56,3 +56,110 @@ diff -uprN libressl-2.9.2.orig/apps/openssl/Makefile.in libressl-2.9.2/apps/open
  
  # Tell versions [3.59,3.63) of GNU make to not export all variables.
  # Otherwise a system limit (for SysV at least) may be exceeded.
+diff -uprN --exclude=.DS_Store libressl-2.9.2.orig/configure libressl-2.9.2/configure
+--- libressl-2.9.2.orig/configure	2019-05-16 11:26:50.000000000 +0900
++++ libressl-2.9.2/configure	2019-10-05 19:10:03.000000000 +0900
+@@ -13025,16 +13025,64 @@ else
+ fi
+ 
+  if test "x$ac_cv_func_strndup" = xyes; then
+-  HAVE_STRNDUP_TRUE=
+-  HAVE_STRNDUP_FALSE='#'
++  if test x$HOST_OS = xdarwin; then
++    # Check availability
++    fn_name="strndup"
++    fn_min_version="10.7"
++    { $as_echo "$as_me:${as_lineno-$LINENO}: checking availability of ${fn_name}" >&5
++      $as_echo_n "checking availability of ${fn_name}... " >&6; }
++    if test -n ${MACOSX_DEPLOYMENT_TARGET} \
++      && ! printf '%s\n%s' "${fn_min_version}" "${MACOSX_DEPLOYMENT_TARGET}" | sort -C -V; then
++      {
++        $as_echo "$as_me:${as_lineno-$LINENO}: unavailable" >&5
++        $as_echo "only available on macOS ${fn_min_version} or newer" >&6
++      }
++      HAVE_STRNDUP_TRUE='#'
++      HAVE_STRNDUP_FALSE=
++    else
++      {
++        $as_echo "$as_me:${as_lineno-$LINENO}: available" >&5
++        $as_echo "available" >&6
++      }
++      HAVE_STRNDUP_TRUE=
++      HAVE_STRNDUP_FALSE='#'
++    fi
++  else
++    HAVE_STRNDUP_TRUE=
++    HAVE_STRNDUP_FALSE='#'
++  fi
+ else
+   HAVE_STRNDUP_TRUE='#'
+   HAVE_STRNDUP_FALSE=
+ fi
+ 
+  if test "x$ac_cv_func_strnlen" = xyes; then
+-  HAVE_STRNLEN_TRUE=
+-  HAVE_STRNLEN_FALSE='#'
++  if test x$HOST_OS = xdarwin; then
++    # Check availability
++    fn_name="strnlen"
++    fn_min_version="10.7"
++    { $as_echo "$as_me:${as_lineno-$LINENO}: checking availability of ${fn_name}" >&5
++      $as_echo_n "checking availability of ${fn_name}... " >&6; }
++    if test -n ${MACOSX_DEPLOYMENT_TARGET} \
++      && ! printf '%s\n%s' "${fn_min_version}" "${MACOSX_DEPLOYMENT_TARGET}" | sort -C -V; then
++      {
++        $as_echo "$as_me:${as_lineno-$LINENO}: unavailable" >&5
++        $as_echo "only available on macOS ${fn_min_version} or newer" >&6
++      }
++      HAVE_STRNLEN_TRUE='#'
++      HAVE_STRNLEN_FALSE=
++    else
++      {
++        $as_echo "$as_me:${as_lineno-$LINENO}: available" >&5
++        $as_echo "available" >&6
++      }
++      HAVE_STRNLEN_TRUE=
++      HAVE_STRNLEN_FALSE='#'
++    fi
++  else
++    HAVE_STRNLEN_TRUE=
++    HAVE_STRNLEN_FALSE='#'
++  fi
+ else
+   HAVE_STRNLEN_TRUE='#'
+   HAVE_STRNLEN_FALSE=
+@@ -13290,8 +13338,32 @@ else
+ fi
+ 
+  if test "x$ac_cv_func_timingsafe_bcmp" = xyes; then
+-  HAVE_TIMINGSAFE_BCMP_TRUE=
+-  HAVE_TIMINGSAFE_BCMP_FALSE='#'
++  if test x$HOST_OS = xdarwin; then
++    # Check availability
++    fn_name="timingsafe_bcmp"
++    fn_min_version="10.12.1"
++    { $as_echo "$as_me:${as_lineno-$LINENO}: checking availability of ${fn_name}" >&5
++      $as_echo_n "checking availability of ${fn_name}... " >&6; }
++    if test -n ${MACOSX_DEPLOYMENT_TARGET} \
++      && ! printf '%s\n%s' "${fn_min_version}" "${MACOSX_DEPLOYMENT_TARGET}" | sort -C -V; then
++      {
++        $as_echo "$as_me:${as_lineno-$LINENO}: unavailable" >&5
++        $as_echo "only available on macOS ${fn_min_version} or newer" >&6
++      }
++      HAVE_TIMINGSAFE_BCMP_TRUE='#'
++      HAVE_TIMINGSAFE_BCMP_FALSE=
++    else
++      {
++        $as_echo "$as_me:${as_lineno-$LINENO}: available" >&5
++        $as_echo "available" >&6
++      }
++      HAVE_TIMINGSAFE_BCMP_TRUE=
++      HAVE_TIMINGSAFE_BCMP_FALSE='#'
++    fi
++  else
++    HAVE_TIMINGSAFE_BCMP_TRUE=
++    HAVE_TIMINGSAFE_BCMP_FALSE='#'
++  fi
+ else
+   HAVE_TIMINGSAFE_BCMP_TRUE='#'
+   HAVE_TIMINGSAFE_BCMP_FALSE=
