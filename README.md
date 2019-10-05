@@ -10,8 +10,8 @@ LibreSSL framework is a porting framework of [LibreSSL](http://www.libressl.org)
 
 ## Requirements
 
-* Xcode 11 (11A420a)
-* Base SDK: macOS 10.15
+* Xcode 10 (10G8)
+* Base SDK: macOS 10.14
 * Deployment Target: macOS 10.6
 * Architectures: x86_64
 
