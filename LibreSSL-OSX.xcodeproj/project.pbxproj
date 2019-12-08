@@ -153,7 +153,6 @@
 				D765113D1BBE96E1004D9EEF /* Install LibreSSL Headers */,
 				D74EF8311E377FC30051633E /* Install LibreSSL Libraries */,
 				D7B1D7191BBAB8B500EE962A /* Resources */,
-				D765113A1BBE8F31004D9EEF /* Copy & Open Target Build Directory */,
 			);
 			buildRules = (
 			);
@@ -251,20 +250,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "set -ev\n\nLIBCRYPTO_FILENAME=$(basename `readlink \"${LIBRESSL_LIB_DIR}/libcrypto.dylib\"`)\nLIBCRYPTO_FILE=\"${LIBRESSL_LIB_DIR}/${LIBCRYPTO_FILENAME}\"\nLIBCRYPTO_OLD_NAME=\"${LIBCRYPTO_FILE}\"\nLIBCRYPTO_NEW_NAME=\"@loader_path/${LIBCRYPTO_FILENAME}\"\n\nLIBSSL_FILENAME=$(basename `readlink \"${LIBRESSL_LIB_DIR}/libssl.dylib\"`)\nLIBSSL_FILE=\"${LIBRESSL_LIB_DIR}/${LIBSSL_FILENAME}\"\nLIBSSL_OLD_NAME=\"${LIBSSL_FILE}\"\nLIBSSL_NEW_NAME=\"@loader_path/${LIBSSL_FILENAME}\"\n\nLIBTLS_FILENAME=$(basename `readlink \"${LIBRESSL_LIB_DIR}/libtls.dylib\"`)\nLIBTLS_FILE=\"${LIBRESSL_LIB_DIR}/${LIBTLS_FILENAME}\"\nLIBTLS_NEW_NAME=\"@loader_path/${LIBTLS_FILENAME}\"\n\n# Change the name in libcrypto\ninstall_name_tool -id \"${LIBCRYPTO_NEW_NAME}\" \"${LIBCRYPTO_FILE}\"\n\n# Change the name, dependent library names in libssl\ninstall_name_tool -change \"${LIBCRYPTO_OLD_NAME}\" \"${LIBCRYPTO_NEW_NAME}\" -id \"${LIBSSL_NEW_NAME}\" \"${LIBSSL_FILE}\"\n\n# Change the name, dependent library names in libtls\ninstall_name_tool -change \"${LIBCRYPTO_OLD_NAME}\" \"${LIBCRYPTO_NEW_NAME}\" -change \"${LIBSSL_OLD_NAME}\" \"${LIBSSL_NEW_NAME}\" -id \"${LIBTLS_NEW_NAME}\" \"${LIBTLS_FILE}\"\n";
-		};
-		D765113A1BBE8F31004D9EEF /* Copy & Open Target Build Directory */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy & Open Target Build Directory";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "set -ev\n\necho \"${TARGET_BUILD_DIR}\" | pbcopy\nopen \"${TARGET_BUILD_DIR}\"\n";
 		};
 		D765113D1BBE96E1004D9EEF /* Install LibreSSL Headers */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -448,7 +433,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LIBRESSL_BUILD_DIR = "${CONFIGURATION_TEMP_DIR}/${LIBRESSL_PACKAGE_NAME}.build";
-				LIBRESSL_FRAMEWORK_VERSION = 3.6.3;
+				LIBRESSL_FRAMEWORK_VERSION = 3.6.4;
 				LIBRESSL_INCLUDE_DIR = "${LIBRESSL_INSTALL_DIR}/include";
 				LIBRESSL_INSTALL_DIR = "${CONFIGURATION_TEMP_DIR}/${LIBRESSL_PACKAGE_NAME}.install";
 				LIBRESSL_LIB_DIR = "${LIBRESSL_INSTALL_DIR}/lib";
@@ -505,7 +490,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LIBRESSL_BUILD_DIR = "${CONFIGURATION_TEMP_DIR}/${LIBRESSL_PACKAGE_NAME}.build";
-				LIBRESSL_FRAMEWORK_VERSION = 3.6.3;
+				LIBRESSL_FRAMEWORK_VERSION = 3.6.4;
 				LIBRESSL_INCLUDE_DIR = "${LIBRESSL_INSTALL_DIR}/include";
 				LIBRESSL_INSTALL_DIR = "${CONFIGURATION_TEMP_DIR}/${LIBRESSL_PACKAGE_NAME}.install";
 				LIBRESSL_LIB_DIR = "${LIBRESSL_INSTALL_DIR}/lib";
@@ -538,7 +523,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gyazsquare.LibreSSL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REEXPORTED_LIBRARY_NAMES = "crypto ssl tls";
-				SKIP_INSTALL = YES;
 				UMBRELLA_HEADER = "${PRODUCT_NAME}.h";
 			};
 			name = Debug;
@@ -561,7 +545,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gyazsquare.LibreSSL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REEXPORTED_LIBRARY_NAMES = "crypto ssl tls";
-				SKIP_INSTALL = YES;
 				UMBRELLA_HEADER = "${PRODUCT_NAME}.h";
 			};
 			name = Release;
