@@ -28,6 +28,7 @@ extern "C" {
 #include <LibreSSL/openssl/cast.h>
 #include <LibreSSL/openssl/chacha.h>
 #include <LibreSSL/openssl/cmac.h>
+#include <LibreSSL/openssl/cms.h>
 #include <LibreSSL/openssl/comp.h>
 #include <LibreSSL/openssl/conf.h>
 #include <LibreSSL/openssl/conf_api.h>
