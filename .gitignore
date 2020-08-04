@@ -3,3 +3,4 @@
 *.xccheckout
 *.xcscmblueprint
 *.xcuserdatad
+/Releases
