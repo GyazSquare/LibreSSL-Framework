@@ -1,6 +1,6 @@
 # LibreSSL Framework
 
-[![Build Status](https://travis-ci.org/GyazSquare/LibreSSL-Framework.svg?branch=master)](https://travis-ci.org/GyazSquare/LibreSSL-Framework)
+[![Build Status](https://travis-ci.com/GyazSquare/LibreSSL-Framework.svg?branch=master)](https://travis-ci.com/GyazSquare/LibreSSL-Framework)
 
 LibreSSL framework is a porting framework of [LibreSSL](http://www.libressl.org) for OS X.
 
