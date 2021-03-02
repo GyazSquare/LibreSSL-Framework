@@ -83,6 +83,7 @@ extern "C" {
 #include <LibreSSL/openssl/ui_compat.h>
 #include <LibreSSL/openssl/whrlpool.h>
 #include <LibreSSL/openssl/x509.h>
+#include <LibreSSL/openssl/x509_verify.h>
 #include <LibreSSL/openssl/x509_vfy.h>
 #include <LibreSSL/openssl/x509v3.h>
 
