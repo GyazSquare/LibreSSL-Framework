@@ -6,7 +6,7 @@ LibreSSL framework is a porting framework of [LibreSSL](http://www.libressl.org)
 
 ## LibreSSL Version
 
-[3.1.3](https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.1.3-relnotes.txt)
+[3.2.4](https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.2.4-relnotes.txt)
 
 ## Requirements
 
