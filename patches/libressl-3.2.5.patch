@@ -1,6 +1,6 @@
-diff -uprN libressl-3.2.4.orig/apps/openssl/Makefile.in libressl-3.2.4/apps/openssl/Makefile.in
---- libressl-3.2.4.orig/apps/openssl/Makefile.in	2021-02-08 01:25:24.000000000 +0900
-+++ libressl-3.2.4/apps/openssl/Makefile.in	2021-03-02 21:20:44.000000000 +0900
+diff -uprN libressl-3.2.5.orig/apps/openssl/Makefile.in libressl-3.2.5/apps/openssl/Makefile.in
+--- libressl-3.2.5.orig/apps/openssl/Makefile.in	2021-03-16 05:38:14.000000000 +0900
++++ libressl-3.2.5/apps/openssl/Makefile.in	2021-03-27 19:44:00.000000000 +0900
 @@ -993,31 +993,31 @@ uninstall-man: uninstall-man1
  
  
@@ -56,9 +56,9 @@ diff -uprN libressl-3.2.4.orig/apps/openssl/Makefile.in libressl-3.2.4/apps/open
  
  # Tell versions [3.59,3.63) of GNU make to not export all variables.
  # Otherwise a system limit (for SysV at least) may be exceeded.
-diff -uprN libressl-3.2.4.orig/configure libressl-3.2.4/configure
---- libressl-3.2.4.orig/configure	2021-02-08 01:25:22.000000000 +0900
-+++ libressl-3.2.4/configure	2021-03-02 21:25:11.000000000 +0900
+diff -uprN libressl-3.2.5.orig/configure libressl-3.2.5/configure
+--- libressl-3.2.5.orig/configure	2021-03-16 05:38:12.000000000 +0900
++++ libressl-3.2.5/configure	2021-03-27 19:52:28.000000000 +0900
 @@ -13115,16 +13115,64 @@ else
  fi
  
