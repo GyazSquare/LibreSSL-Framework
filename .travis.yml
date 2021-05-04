@@ -7,7 +7,7 @@ xcode_sdk: macosx11.0
 before_install:
 - gem install xcpretty
 script:
-- set -o pipefail && ./scripts/travis-run-tests.sh | xcpretty -c
+- set -o pipefail && ./scripts/travis-run-tests.sh | xcpretty -s
 notifications:
   slack:
     secure: bcDI7Fulf0OzqwzlIR5/oRt3Ay7J2A0WdcEo4gGg94qY+NtanxV5DyIwNqRC743LprNDDxwSOBO1N3wo70KMCHljPZjNiLG7pClgxtOapmkXi/Zz19JwXnSzSltEhcUnNyMBF4Bca1cT5IjT66Va/kaAZ+pR636Wx6zuaZwhOMq3I+dvhjCeETX3UF+gPMOzquxRslROzOqLE4G5jx68w81/X9ykYf8A5fdkNoHu9z7ZdT97jiSqsN1rZgxEdnWE8kPcTQEJLX7erqPa8qIt8Qsnj81XIYK6x/5dpkz09NIdCJ9aBEhwkMKccxTUpNKnsBqzjXZQE56GWwMnRbQX66z74jjcRHXfRXYN5LSlJ6r2xPgDa6UHd7j3u7ROqQYe6eUu+8wa6ycThacAYeLF2oPuY1NnKP2b1yhHepDsMlFTWJJn+rY3aRg4obCgk+aMrdWy71bgHHjwtzGCMqtVngLUACCqHDenjoyST16k84nn+ey8cQlSkSlgtAYvCeEAI+Kqj5ETOJiuNZh4M8mhv9BKuqmD602lrS6rH38gNO65uEN7yCsP5jsAuWhPLoTfnZS6IfMWcgmz0t/RnrvFyHhXYDd1G4g73JaVBrVH5VQczUGAOqJYAMla5KnJEeNreA1YROWi7+JX0pK+ZGIFh0UY9j5gNzl00gzYSgJCADw=
