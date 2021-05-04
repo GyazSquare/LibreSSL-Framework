@@ -1,6 +1,6 @@
 diff -uprN libressl-3.2.5.orig/apps/openssl/Makefile.in libressl-3.2.5/apps/openssl/Makefile.in
 --- libressl-3.2.5.orig/apps/openssl/Makefile.in	2021-03-16 05:38:14.000000000 +0900
-+++ libressl-3.2.5/apps/openssl/Makefile.in	2021-03-27 19:44:00.000000000 +0900
++++ libressl-3.2.5/apps/openssl/Makefile.in	2021-03-28 20:58:36.000000000 +0900
 @@ -993,31 +993,31 @@ uninstall-man: uninstall-man1
  
  
@@ -58,7 +58,7 @@ diff -uprN libressl-3.2.5.orig/apps/openssl/Makefile.in libressl-3.2.5/apps/open
  # Otherwise a system limit (for SysV at least) may be exceeded.
 diff -uprN libressl-3.2.5.orig/configure libressl-3.2.5/configure
 --- libressl-3.2.5.orig/configure	2021-03-16 05:38:12.000000000 +0900
-+++ libressl-3.2.5/configure	2021-03-27 19:52:28.000000000 +0900
++++ libressl-3.2.5/configure	2021-03-30 21:52:10.000000000 +0900
 @@ -13115,16 +13115,64 @@ else
  fi
  
@@ -128,7 +128,42 @@ diff -uprN libressl-3.2.5.orig/configure libressl-3.2.5/configure
  else
    HAVE_STRNLEN_TRUE='#'
    HAVE_STRNLEN_FALSE=
-@@ -13380,8 +13428,32 @@ else
+@@ -13139,8 +13187,32 @@ else
+ fi
+ 
+  if test "x$ac_cv_func_strtonum" = xyes; then
+-  HAVE_STRTONUM_TRUE=
+-  HAVE_STRTONUM_FALSE='#'
++  if test x$HOST_OS = xdarwin; then
++    # Check availability
++    fn_name="strtonum"
++    fn_min_version="11.0"
++    { $as_echo "$as_me:${as_lineno-$LINENO}: checking availability of ${fn_name}" >&5
++      $as_echo_n "checking availability of ${fn_name}... " >&6; }
++    if test -n ${MACOSX_DEPLOYMENT_TARGET} \
++      && ! printf '%s\n%s' "${fn_min_version}" "${MACOSX_DEPLOYMENT_TARGET}" | sort -C -V; then
++      {
++        $as_echo "$as_me:${as_lineno-$LINENO}: unavailable" >&5
++        $as_echo "only available on macOS ${fn_min_version} or newer" >&6
++      }
++      HAVE_STRTONUM_TRUE='#'
++      HAVE_STRTONUM_FALSE=
++    else
++      {
++        $as_echo "$as_me:${as_lineno-$LINENO}: available" >&5
++        $as_echo "available" >&6
++      }
++      HAVE_STRTONUM_TRUE=
++      HAVE_STRTONUM_FALSE='#'
++    fi
++  else
++    HAVE_STRTONUM_TRUE=
++    HAVE_STRTONUM_FALSE='#'
++  fi
+ else
+   HAVE_STRTONUM_TRUE='#'
+   HAVE_STRTONUM_FALSE=
+@@ -13380,8 +13452,32 @@ else
  fi
  
   if test "x$ac_cv_func_timingsafe_bcmp" = xyes; then
