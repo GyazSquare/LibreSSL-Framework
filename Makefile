@@ -169,6 +169,12 @@ $(addprefix test-,$(target-archs)): test-%: libressl-%
 
 $(addprefix libressl-,$(target-archs)): libressl-%: builddir-%
 	cd $(builddir-$*) && \
+	find . \( \
+		-name aclocal.m4 -or \
+		-name configure -or \
+		-name Makefile.am -or \
+		-name Makefile.in \) \
+	-print0 | xargs -0 touch -t "`date +%y%m%d%H%M.%S`" && \
 	CC="$(CC)" CFLAGS="$(CFLAGS_$*) $(CFLAGS) $(OTHER_CFLAGS) $(DEBUG_CFLAGS)" LDFLAGS="$(LDFLAGS_$*)" $(CONFIGURE) $(CONFIGUREFLAGS_$*) && \
 	make
 
