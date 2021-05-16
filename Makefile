@@ -168,13 +168,14 @@ $(addprefix test-,$(target-archs)): test-%: libressl-%
 	$(if $(filter $(build-arch),$*),cd $(builddir-$*) && make check)
 
 $(addprefix libressl-,$(target-archs)): libressl-%: builddir-%
-	cd $(builddir-$*) && \
+	cd $(packagedir) && \
 	find . \( \
 		-name aclocal.m4 -or \
 		-name configure -or \
 		-name Makefile.am -or \
 		-name Makefile.in \) \
 	-print0 | xargs -0 touch -t "`date +%y%m%d%H%M.%S`" && \
+	cd $(builddir-$*) && \
 	CC="$(CC)" CFLAGS="$(CFLAGS_$*) $(CFLAGS) $(OTHER_CFLAGS) $(DEBUG_CFLAGS)" LDFLAGS="$(LDFLAGS_$*)" $(CONFIGURE) $(CONFIGUREFLAGS_$*) && \
 	make
 
