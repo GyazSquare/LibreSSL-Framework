@@ -97,7 +97,6 @@ CONFIGUREFLAGS_x86_64 := \
 	--libdir="$(libdir-x86_64)" \
 	--includedir="$(includedir-x86_64)" \
 	--host=x86_64-apple-darwin \
-	--disable-asm \
 	--with-openssldir="$(openssldir)" $(CONFIGUREFLAGS)
 # arm64
 CFLAGS_arm64 := \
