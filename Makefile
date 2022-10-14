@@ -109,7 +109,6 @@ CONFIGUREFLAGS_arm64 := \
 	--libdir="$(libdir-arm64)" \
 	--includedir="$(includedir-arm64)" \
 	--host=aarch64-apple-darwin \
-	--disable-asm \
 	--with-openssldir="$(openssldir)" $(CONFIGUREFLAGS)
 
 all: install
