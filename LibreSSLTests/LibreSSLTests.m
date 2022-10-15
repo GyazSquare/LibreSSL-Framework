@@ -51,4 +51,21 @@
     XCTAssertTrue(TLS_client_method() != NULL);
 }
 
+- (void)testTls_client {
+    self.continueAfterFailure = NO;
+    struct tls *ctx = tls_client();
+    XCTAssertTrue(ctx != NULL);
+    XCTAssertTrue(tls_connect(ctx, "www.example.com", "443") == 0,
+                  @"tls_connect: %@", @(tls_error(ctx)));
+    do {
+        ssize_t ret = tls_close(ctx);
+        if (ret == TLS_WANT_POLLIN || ret == TLS_WANT_POLLOUT) {
+            continue;
+        }
+        XCTAssertTrue(ret == 0, @"tls_close: %@", @(tls_error(ctx)));
+        break;
+    } while (1);
+    tls_free(ctx);
+}
+
 @end

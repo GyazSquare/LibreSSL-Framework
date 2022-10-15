@@ -6,13 +6,13 @@ LibreSSL framework is a porting framework of [LibreSSL](http://www.libressl.org)
 
 ## LibreSSL Version
 
-[3.2.5](https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.2.5-relnotes.txt)
+[3.5.3](https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.5.3-relnotes.txt)
 
 ## Requirements
 
-* Xcode 11.7 (11E801a)
-* Base SDK: macOS 10.15
-* Deployment Target: macOS 10.6
+* Xcode 12.0.1 (12A7300)
+* Base SDK: macOS 10.15.6
+* Deployment Target: macOS 10.6+
 * Architectures: x86_64
 
 ## Installation
