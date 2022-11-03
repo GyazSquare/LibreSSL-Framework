@@ -33,7 +33,6 @@ extern "C" {
 #include <LibreSSL/openssl/conf.h>
 #include <LibreSSL/openssl/conf_api.h>
 #include <LibreSSL/openssl/ct.h>
-#include <LibreSSL/openssl/cterr.h>
 #include <LibreSSL/openssl/curve25519.h>
 #include <LibreSSL/openssl/des.h>
 #include <LibreSSL/openssl/dh.h>
@@ -50,6 +49,7 @@ extern "C" {
 #include <LibreSSL/openssl/hkdf.h>
 #include <LibreSSL/openssl/hmac.h>
 #include <LibreSSL/openssl/idea.h>
+#include <LibreSSL/openssl/kdf.h>
 #include <LibreSSL/openssl/lhash.h>
 #include <LibreSSL/openssl/md4.h>
 #include <LibreSSL/openssl/md5.h>
