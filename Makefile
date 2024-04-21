@@ -26,7 +26,6 @@ build-arch := $(shell /usr/bin/uname -m)
 CC := $(shell xcrun --sdk macosx --find cc)
 LIPO := $(shell xcrun --sdk macosx --find lipo)
 INSTALL_NAME_TOOL := $(shell xcrun --sdk macosx --find install_name_tool)
-SDKROOT := $(shell xcrun --sdk macosx --show-sdk-path)
 
 ifeq ($(ONLY_ACTIVE_ARCH),YES)
 target-archs := $(build-arch)
@@ -88,9 +87,7 @@ endif
 
 # x86_64
 CFLAGS_x86_64 := \
-	-arch x86_64 \
-	-isysroot $(SDKROOT) \
-	--target=x86_64-$(LLVM_TARGET_TRIPLE_VENDOR)-$(LLVM_TARGET_TRIPLE_OS_VERSION)
+	-arch x86_64
 LDFLAGS_x86_64 := $(CFLAGS_x86_64) $(LDFLAGS) $(OTHER_LDFLAGS)
 CONFIGUREFLAGS_x86_64 := \
 	--prefix="$(installdir-x86_64)" \
@@ -100,16 +97,13 @@ CONFIGUREFLAGS_x86_64 := \
 	--with-openssldir="$(openssldir)" $(CONFIGUREFLAGS)
 # arm64
 CFLAGS_arm64 := \
-	-arch arm64 \
-	-isysroot $(SDKROOT) \
-	--target=arm64-$(LLVM_TARGET_TRIPLE_VENDOR)-$(LLVM_TARGET_TRIPLE_OS_VERSION)
+	-arch arm64
 LDFLAGS_arm64 := $(CFLAGS_arm64) $(LDFLAGS) $(OTHER_LDFLAGS)
 CONFIGUREFLAGS_arm64 := \
 	--prefix="$(installdir-arm64)" \
 	--libdir="$(libdir-arm64)" \
 	--includedir="$(includedir-arm64)" \
 	--host=aarch64-apple-darwin \
-	--disable-asm \
 	--with-openssldir="$(openssldir)" $(CONFIGUREFLAGS)
 
 all: install
