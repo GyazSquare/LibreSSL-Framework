@@ -12,7 +12,7 @@ on:
 env:
   XCODE_PROJECT: LibreSSL-OSX.xcodeproj
   XCODE_SCHEME: LibreSSL
-  XCODE_DESTINATION: platform=macOS
+  XCODE_DESTINATION: platform=macOS,arch=x86_64
   XCODE_SDK: macosx12.3
 
 concurrency:
