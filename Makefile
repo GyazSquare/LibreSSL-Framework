@@ -45,7 +45,6 @@ openssl-archs := $(addsuffix /$(openssl-name),$(bindir-archs))
 
 # lib
 libdir-archs := $(foreach dir,$(addprefix installdir-,$(target-archs)),$($(dir))/lib)
-libdir-arch := $(firstword $(libdir-archs))
 
 libcrypto-linkname := libcrypto.dylib
 libcrypto-archs := $(addsuffix /$(libcrypto-linkname),$(libdir-archs))
@@ -117,12 +116,12 @@ install: $(addprefix install-,$(target-archs))
 	install -d $(bindir)
 	cd $(bindir) && \
 	$(LIPO) $(ocspcheck-archs) -create -output $(ocspcheck-name) && \
-	$(INSTALL_NAME_TOOL) -change $(libdir-arch)/$(libcrypto-name) $(libdir)/$(libcrypto-name) $(ocspcheck-name) && \
-	$(INSTALL_NAME_TOOL) -change $(libdir-arch)/$(libssl-name) $(libdir)/$(libssl-name) $(ocspcheck-name) && \
-	$(INSTALL_NAME_TOOL) -change $(libdir-arch)/$(libtls-name) $(libdir)/$(libtls-name) $(ocspcheck-name) && \
+	$(foreach libdir-arch,$(libdir-archs),$(INSTALL_NAME_TOOL) -change $(libdir-arch)/$(libcrypto-name) $(libdir)/$(libcrypto-name) $(ocspcheck-name) && )\
+	$(foreach libdir-arch,$(libdir-archs),$(INSTALL_NAME_TOOL) -change $(libdir-arch)/$(libssl-name) $(libdir)/$(libssl-name) $(ocspcheck-name) && )\
+	$(foreach libdir-arch,$(libdir-archs),$(INSTALL_NAME_TOOL) -change $(libdir-arch)/$(libtls-name) $(libdir)/$(libtls-name) $(ocspcheck-name) && )\
 	$(LIPO) $(openssl-archs) -create -output $(openssl-name) && \
-	$(INSTALL_NAME_TOOL) -change $(libdir-arch)/$(libcrypto-name) $(libdir)/$(libcrypto-name) $(openssl-name) && \
-	$(INSTALL_NAME_TOOL) -change $(libdir-arch)/$(libssl-name) $(libdir)/$(libssl-name) $(openssl-name)
+	$(foreach libdir-arch,$(libdir-archs),$(INSTALL_NAME_TOOL) -change $(libdir-arch)/$(libcrypto-name) $(libdir)/$(libcrypto-name) $(openssl-name) && )\
+	$(foreach libdir-arch,$(libdir-archs),$(INSTALL_NAME_TOOL) -change $(libdir-arch)/$(libssl-name) $(libdir)/$(libssl-name) $(openssl-name) && )true
     # include
 	cp -a $(includedir-arch) $(installdir)
     # lib
@@ -134,7 +133,7 @@ install: $(addprefix install-,$(target-archs))
 	$(LIPO) $(libssl-archs) -create -output $(libssl-name) && \
 	ln -fns $(libssl-name) $(libssl-linkname) && \
 	$(INSTALL_NAME_TOOL) -id $(libdir)/$(libssl-name) $(libssl-name) && \
-	$(INSTALL_NAME_TOOL) -change $(libdir-arch)/$(libcrypto-name) $(libdir)/$(libcrypto-name) $(libssl-name) && \
+	$(foreach libdir-arch,$(libdir-archs),$(INSTALL_NAME_TOOL) -change $(libdir-arch)/$(libcrypto-name) $(libdir)/$(libcrypto-name) $(libssl-name) && ) \
 	$(LIPO) $(libtls-archs) -create -output $(libtls-name) && \
 	ln -fns $(libtls-name) $(libtls-linkname) && \
 	$(INSTALL_NAME_TOOL) -id $(libdir)/$(libtls-name) $(libtls-name)
