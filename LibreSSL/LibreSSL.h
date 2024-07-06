@@ -33,12 +33,10 @@ extern "C" {
 #include <LibreSSL/openssl/conf.h>
 #include <LibreSSL/openssl/conf_api.h>
 #include <LibreSSL/openssl/ct.h>
-#include <LibreSSL/openssl/cterr.h>
 #include <LibreSSL/openssl/curve25519.h>
 #include <LibreSSL/openssl/des.h>
 #include <LibreSSL/openssl/dh.h>
 #include <LibreSSL/openssl/dsa.h>
-#include <LibreSSL/openssl/dso.h>
 #include <LibreSSL/openssl/dtls1.h>
 #include <LibreSSL/openssl/ec.h>
 #include <LibreSSL/openssl/ecdh.h>
@@ -46,10 +44,10 @@ extern "C" {
 #include <LibreSSL/openssl/engine.h>
 #include <LibreSSL/openssl/err.h>
 #include <LibreSSL/openssl/evp.h>
-#include <LibreSSL/openssl/gost.h>
 #include <LibreSSL/openssl/hkdf.h>
 #include <LibreSSL/openssl/hmac.h>
 #include <LibreSSL/openssl/idea.h>
+#include <LibreSSL/openssl/kdf.h>
 #include <LibreSSL/openssl/lhash.h>
 #include <LibreSSL/openssl/md4.h>
 #include <LibreSSL/openssl/md5.h>
@@ -64,6 +62,7 @@ extern "C" {
 #include <LibreSSL/openssl/pkcs12.h>
 #include <LibreSSL/openssl/pkcs7.h>
 #include <LibreSSL/openssl/poly1305.h>
+#include <LibreSSL/openssl/posix_time.h>
 #include <LibreSSL/openssl/rand.h>
 #include <LibreSSL/openssl/rc2.h>
 #include <LibreSSL/openssl/rc4.h>
@@ -85,7 +84,6 @@ extern "C" {
 #include <LibreSSL/openssl/ui_compat.h>
 #include <LibreSSL/openssl/whrlpool.h>
 #include <LibreSSL/openssl/x509.h>
-#include <LibreSSL/openssl/x509_verify.h>
 #include <LibreSSL/openssl/x509_vfy.h>
 #include <LibreSSL/openssl/x509v3.h>
 
