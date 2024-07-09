@@ -136,7 +136,9 @@ install: $(addprefix install-,$(target-archs))
 	$(foreach libdir-arch,$(libdir-archs),$(INSTALL_NAME_TOOL) -change $(libdir-arch)/$(libcrypto-name) $(libdir)/$(libcrypto-name) $(libssl-name) && ) \
 	$(LIPO) $(libtls-archs) -create -output $(libtls-name) && \
 	ln -fns $(libtls-name) $(libtls-linkname) && \
-	$(INSTALL_NAME_TOOL) -id $(libdir)/$(libtls-name) $(libtls-name)
+	$(INSTALL_NAME_TOOL) -id $(libdir)/$(libtls-name) $(libtls-name) && \
+	$(foreach libdir-arch,$(libdir-archs),$(INSTALL_NAME_TOOL) -change $(libdir-arch)/$(libcrypto-name) $(libdir)/$(libcrypto-name) $(libtls-name) && ) \
+	$(foreach libdir-arch,$(libdir-archs),$(INSTALL_NAME_TOOL) -change $(libdir-arch)/$(libssl-name) $(libdir)/$(libssl-name) $(libtls-name) && )true
     # share
 	cp -a $(sharedir-arch) $(installdir)
 
