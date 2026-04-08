@@ -31,7 +31,6 @@ extern "C" {
 #include <LibreSSL/openssl/cms.h>
 #include <LibreSSL/openssl/comp.h>
 #include <LibreSSL/openssl/conf.h>
-#include <LibreSSL/openssl/conf_api.h>
 #include <LibreSSL/openssl/ct.h>
 #include <LibreSSL/openssl/curve25519.h>
 #include <LibreSSL/openssl/des.h>
@@ -51,6 +50,7 @@ extern "C" {
 #include <LibreSSL/openssl/lhash.h>
 #include <LibreSSL/openssl/md4.h>
 #include <LibreSSL/openssl/md5.h>
+#include <LibreSSL/openssl/mlkem.h>
 #include <LibreSSL/openssl/modes.h>
 #include <LibreSSL/openssl/obj_mac.h>
 #include <LibreSSL/openssl/objects.h>
@@ -58,7 +58,6 @@ extern "C" {
 #include <LibreSSL/openssl/opensslv.h>
 #include <LibreSSL/openssl/ossl_typ.h>
 #include <LibreSSL/openssl/pem.h>
-#include <LibreSSL/openssl/pem2.h>
 #include <LibreSSL/openssl/pkcs12.h>
 #include <LibreSSL/openssl/pkcs7.h>
 #include <LibreSSL/openssl/poly1305.h>
@@ -73,16 +72,12 @@ extern "C" {
 #include <LibreSSL/openssl/sm3.h>
 #include <LibreSSL/openssl/sm4.h>
 #include <LibreSSL/openssl/srtp.h>
-#include <LibreSSL/openssl/ssl2.h>
-#include <LibreSSL/openssl/ssl23.h>
 #include <LibreSSL/openssl/ssl3.h>
 #include <LibreSSL/openssl/stack.h>
 #include <LibreSSL/openssl/tls1.h>
 #include <LibreSSL/openssl/ts.h>
 #include <LibreSSL/openssl/txt_db.h>
 #include <LibreSSL/openssl/ui.h>
-#include <LibreSSL/openssl/ui_compat.h>
-#include <LibreSSL/openssl/whrlpool.h>
 #include <LibreSSL/openssl/x509.h>
 #include <LibreSSL/openssl/x509_vfy.h>
 #include <LibreSSL/openssl/x509v3.h>

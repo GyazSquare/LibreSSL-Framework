@@ -1,0 +1,131 @@
+diff -uprN libressl-4.2.1.orig/Makefile.in libressl-4.2.1/Makefile.in
+--- libressl-4.2.1.orig/Makefile.in	2025-10-28 22:16:47.000000000 +0900
++++ libressl-4.2.1/Makefile.in	2026-04-06 21:11:51.000000000 +0900
+@@ -909,31 +909,31 @@ uninstall-am: uninstall-local uninstall-
+ install_sw: install
+ 
+ install-exec-hook:
+-	@if [ "@OPENSSLDIR@x" != "x" ]; then \
+-		OPENSSLDIR="$(DESTDIR)@OPENSSLDIR@"; \
+-	else \
+-		OPENSSLDIR="$(DESTDIR)$(sysconfdir)/ssl"; \
+-	fi; \
+-	mkdir -p "$$OPENSSLDIR/certs"; \
+-	for i in cert.pem openssl.cnf x509v3.cnf; do \
+-		if [ ! -f "$$OPENSSLDIR/$i" ]; then \
+-			$(INSTALL) -m 644 "$(srcdir)/$$i" "$$OPENSSLDIR/$$i"; \
+-		else \
+-			echo " $$OPENSSLDIR/$$i already exists, install will not overwrite"; \
+-		fi \
+-	done
++	# @if [ "@OPENSSLDIR@x" != "x" ]; then \
++	# 	OPENSSLDIR="$(DESTDIR)@OPENSSLDIR@"; \
++	# else \
++	# 	OPENSSLDIR="$(DESTDIR)$(sysconfdir)/ssl"; \
++	# fi; \
++	# mkdir -p "$$OPENSSLDIR/certs"; \
++	# for i in cert.pem openssl.cnf x509v3.cnf; do \
++	# 	if [ ! -f "$$OPENSSLDIR/$i" ]; then \
++	# 		$(INSTALL) -m 644 "$(srcdir)/$$i" "$$OPENSSLDIR/$$i"; \
++	# 	else \
++	# 		echo " $$OPENSSLDIR/$$i already exists, install will not overwrite"; \
++	# 	fi \
++	# done
+ 
+ uninstall-local:
+-	@if [ "@OPENSSLDIR@x" != "x" ]; then \
+-		OPENSSLDIR="$(DESTDIR)@OPENSSLDIR@"; \
+-	else \
+-		OPENSSLDIR="$(DESTDIR)$(sysconfdir)/ssl"; \
+-	fi; \
+-	for i in cert.pem openssl.cnf x509v3.cnf; do \
+-		if cmp -s "$$OPENSSLDIR/$$i" "$(srcdir)/$$i"; then \
+-			rm -f "$$OPENSSLDIR/$$i"; \
+-		fi \
+-	done
++	# @if [ "@OPENSSLDIR@x" != "x" ]; then \
++	# 	OPENSSLDIR="$(DESTDIR)@OPENSSLDIR@"; \
++	# else \
++	# 	OPENSSLDIR="$(DESTDIR)$(sysconfdir)/ssl"; \
++	# fi; \
++	# for i in cert.pem openssl.cnf x509v3.cnf; do \
++	# 	if cmp -s "$$OPENSSLDIR/$$i" "$(srcdir)/$$i"; then \
++	# 		rm -f "$$OPENSSLDIR/$$i"; \
++	# 	fi \
++	# done
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+diff -uprN libressl-4.2.1.orig/configure libressl-4.2.1/configure
+--- libressl-4.2.1.orig/configure	2025-10-28 22:16:46.000000000 +0900
++++ libressl-4.2.1/configure	2026-04-06 21:11:51.000000000 +0900
+@@ -13948,8 +13948,32 @@ else
+ fi
+ 
+  if test "x$ac_cv_func_strtonum" = xyes; then
+-  HAVE_STRTONUM_TRUE=
+-  HAVE_STRTONUM_FALSE='#'
++  if test x$HOST_OS = xdarwin; then
++    # Check availability
++    fn_name="strtonum"
++    fn_min_version="11.0"
++    { $as_echo "$as_me:${as_lineno-$LINENO}: checking availability of ${fn_name}" >&5
++      $as_echo_n "checking availability of ${fn_name}... " >&6; }
++    if test -n ${MACOSX_DEPLOYMENT_TARGET} \
++      && ! printf '%s\n%s' "${fn_min_version}" "${MACOSX_DEPLOYMENT_TARGET}" | sort -C -V; then
++      {
++        $as_echo "$as_me:${as_lineno-$LINENO}: unavailable" >&5
++        $as_echo "only available on macOS ${fn_min_version} or newer" >&6
++      }
++      HAVE_STRTONUM_TRUE='#'
++      HAVE_STRTONUM_FALSE=
++    else
++      {
++        $as_echo "$as_me:${as_lineno-$LINENO}: available" >&5
++        $as_echo "available" >&6
++      }
++      HAVE_STRTONUM_TRUE=
++      HAVE_STRTONUM_FALSE='#'
++    fi
++  else
++    HAVE_STRTONUM_TRUE=
++    HAVE_STRTONUM_FALSE='#'
++  fi
+ else
+   HAVE_STRTONUM_TRUE='#'
+   HAVE_STRTONUM_FALSE=
+@@ -14213,8 +14237,32 @@ else
+ fi
+ 
+  if test "x$ac_cv_func_timingsafe_bcmp" = xyes; then
+-  HAVE_TIMINGSAFE_BCMP_TRUE=
+-  HAVE_TIMINGSAFE_BCMP_FALSE='#'
++  if test x$HOST_OS = xdarwin; then
++    # Check availability
++    fn_name="timingsafe_bcmp"
++    fn_min_version="10.12.1"
++    { $as_echo "$as_me:${as_lineno-$LINENO}: checking availability of ${fn_name}" >&5
++      $as_echo_n "checking availability of ${fn_name}... " >&6; }
++    if test -n ${MACOSX_DEPLOYMENT_TARGET} \
++      && ! printf '%s\n%s' "${fn_min_version}" "${MACOSX_DEPLOYMENT_TARGET}" | sort -C -V; then
++      {
++        $as_echo "$as_me:${as_lineno-$LINENO}: unavailable" >&5
++        $as_echo "only available on macOS ${fn_min_version} or newer" >&6
++      }
++      HAVE_TIMINGSAFE_BCMP_TRUE='#'
++      HAVE_TIMINGSAFE_BCMP_FALSE=
++    else
++      {
++        $as_echo "$as_me:${as_lineno-$LINENO}: available" >&5
++        $as_echo "available" >&6
++      }
++      HAVE_TIMINGSAFE_BCMP_TRUE=
++      HAVE_TIMINGSAFE_BCMP_FALSE='#'
++    fi
++  else
++    HAVE_TIMINGSAFE_BCMP_TRUE=
++    HAVE_TIMINGSAFE_BCMP_FALSE='#'
++  fi
+ else
+   HAVE_TIMINGSAFE_BCMP_TRUE='#'
+   HAVE_TIMINGSAFE_BCMP_FALSE=
