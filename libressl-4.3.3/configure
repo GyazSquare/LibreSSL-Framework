@@ -14086,8 +14086,32 @@ else
 fi
 
  if test "x$ac_cv_func_strtonum" = xyes; then
-  HAVE_STRTONUM_TRUE=
-  HAVE_STRTONUM_FALSE='#'
+  if test x$HOST_OS = xdarwin; then
+    # Check availability
+    fn_name="strtonum"
+    fn_min_version="11.0"
+    { $as_echo "$as_me:${as_lineno-$LINENO}: checking availability of ${fn_name}" >&5
+      $as_echo_n "checking availability of ${fn_name}... " >&6; }
+    if test -n ${MACOSX_DEPLOYMENT_TARGET} \
+      && ! printf '%s\n%s' "${fn_min_version}" "${MACOSX_DEPLOYMENT_TARGET}" | sort -C -V; then
+      {
+        $as_echo "$as_me:${as_lineno-$LINENO}: unavailable" >&5
+        $as_echo "only available on macOS ${fn_min_version} or newer" >&6
+      }
+      HAVE_STRTONUM_TRUE='#'
+      HAVE_STRTONUM_FALSE=
+    else
+      {
+        $as_echo "$as_me:${as_lineno-$LINENO}: available" >&5
+        $as_echo "available" >&6
+      }
+      HAVE_STRTONUM_TRUE=
+      HAVE_STRTONUM_FALSE='#'
+    fi
+  else
+    HAVE_STRTONUM_TRUE=
+    HAVE_STRTONUM_FALSE='#'
+  fi
 else
   HAVE_STRTONUM_TRUE='#'
   HAVE_STRTONUM_FALSE=
@@ -14446,8 +14470,32 @@ else
 fi
 
  if test "x$ac_cv_func_timingsafe_bcmp" = xyes; then
-  HAVE_TIMINGSAFE_BCMP_TRUE=
-  HAVE_TIMINGSAFE_BCMP_FALSE='#'
+  if test x$HOST_OS = xdarwin; then
+    # Check availability
+    fn_name="timingsafe_bcmp"
+    fn_min_version="10.12.1"
+    { $as_echo "$as_me:${as_lineno-$LINENO}: checking availability of ${fn_name}" >&5
+      $as_echo_n "checking availability of ${fn_name}... " >&6; }
+    if test -n ${MACOSX_DEPLOYMENT_TARGET} \
+      && ! printf '%s\n%s' "${fn_min_version}" "${MACOSX_DEPLOYMENT_TARGET}" | sort -C -V; then
+      {
+        $as_echo "$as_me:${as_lineno-$LINENO}: unavailable" >&5
+        $as_echo "only available on macOS ${fn_min_version} or newer" >&6
+      }
+      HAVE_TIMINGSAFE_BCMP_TRUE='#'
+      HAVE_TIMINGSAFE_BCMP_FALSE=
+    else
+      {
+        $as_echo "$as_me:${as_lineno-$LINENO}: available" >&5
+        $as_echo "available" >&6
+      }
+      HAVE_TIMINGSAFE_BCMP_TRUE=
+      HAVE_TIMINGSAFE_BCMP_FALSE='#'
+    fi
+  else
+    HAVE_TIMINGSAFE_BCMP_TRUE=
+    HAVE_TIMINGSAFE_BCMP_FALSE='#'
+  fi
 else
   HAVE_TIMINGSAFE_BCMP_TRUE='#'
   HAVE_TIMINGSAFE_BCMP_FALSE=
