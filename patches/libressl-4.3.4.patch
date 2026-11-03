@@ -1,6 +1,6 @@
-diff -uprN libressl-4.3.3.orig/Makefile.in libressl-4.3.3/Makefile.in
---- libressl-4.3.3.orig/Makefile.in	2026-10-04 09:54:39.000000000 +0900
-+++ libressl-4.3.3/Makefile.in	2026-10-13 20:42:28.000000000 +0900
+diff -uprN libressl-4.3.4.orig/Makefile.in libressl-4.3.4/Makefile.in
+--- libressl-4.3.4.orig/Makefile.in	2026-10-22 17:00:59.000000000 +0900
++++ libressl-4.3.4/Makefile.in	2026-11-01 17:45:17.000000000 +0900
 @@ -916,31 +916,31 @@ uninstall-am: uninstall-local uninstall-
  install_sw: install
  
@@ -56,9 +56,9 @@ diff -uprN libressl-4.3.3.orig/Makefile.in libressl-4.3.3/Makefile.in
  
  # Tell versions [3.59,3.63) of GNU make to not export all variables.
  # Otherwise a system limit (for SysV at least) may be exceeded.
-diff -uprN libressl-4.3.3.orig/configure libressl-4.3.3/configure
---- libressl-4.3.3.orig/configure	2026-10-04 09:54:38.000000000 +0900
-+++ libressl-4.3.3/configure	2026-10-13 20:42:28.000000000 +0900
+diff -uprN libressl-4.3.4.orig/configure libressl-4.3.4/configure
+--- libressl-4.3.4.orig/configure	2026-10-22 17:00:58.000000000 +0900
++++ libressl-4.3.4/configure	2026-11-01 17:45:17.000000000 +0900
 @@ -14086,8 +14086,32 @@ else
  fi
  
